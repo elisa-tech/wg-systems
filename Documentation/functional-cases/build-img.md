@@ -17,11 +17,11 @@
 
 ## Description
 
-System images for different RCAR based target have to be created with YOCTO based build environment. 
+System images for different RCAR based target have to be created with YOCTO based build environment.
 
-The board specific image has to be flashed to an SD card or loaded from TFTP server. 
+The board specific image has to be flashed to an SD card or loaded from TFTP server.
 
-The firmware (including U-Boot) of Renesas board has to be flashed with specific firmware files of, since the original firmware lacks of support for XEN. 
+The firmware (including U-Boot) of Renesas board has to be flashed with specific firmware files, because the original firmware lacks of support for XEN (CPU cores have to be started in EL2 mode).
 
 At U-Boot, generated at build, a configuration to start the system is preconfigured, but has to be changed.
 
