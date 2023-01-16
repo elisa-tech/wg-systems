@@ -1,6 +1,6 @@
 # Some network tests
 
-[Back to contents](contents.md)
+[Back to **Table of Contents**](contents.md)
 
 ## List of functionalities
 

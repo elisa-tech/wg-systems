@@ -1,6 +1,6 @@
 # Build the system image(s) of meta-xt-prod-devel-rcar
 
-[Back to contents](contents.md)
+[Back to **Table of Contents**](contents.md)
 
 ## List of functionalities
 
