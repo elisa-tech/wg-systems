@@ -29,7 +29,7 @@ System is started like described at [Start the system image of meta-xt-prod-deve
 ## Functionalities
 
 ### Look for started Dom's
-**xl** is the major command to interact with XEN. With **xl list** the state of running VM's prut to screen
+**xl** is the major command to interact with XEN. With **xl list** the state of running VM's are put to screen.
 
 ```
 root@generic-armv8-xt-dom0:~# xl list
@@ -41,6 +41,7 @@ DomU                                         3  1535     4     -b----       9.3
 ```
 
 Here:
+
 - **Domain-0**: Domain controling XEN
 - **DomZ**: Domain with **Zephyr** test installation
 - **DomD**: Standard Linux domain running hardware drivers and 1st instance of **Weston** shell
@@ -103,7 +104,7 @@ With **xl console DomU** the console is switched to **DomU**. The details are ve
 ### Attach console to DomZ
 
 At **DomZ** a simple **Zephyr** application with two threads is installed.
-With **xl console DomZ** the console is switched to **DomZ**. At first switch after starting the system  some system boot messaged and all messages of the test application are displayed.
+With **xl console DomZ** the console is switched to **DomZ**. At first switch after starting the system some system boot messages and all messages of the test application are displayed.
 
 Example for function:
 
@@ -158,7 +159,7 @@ root@generic-armv8-xt-dom0:~#
 
 ```
 
-**DomU** has been deleted at list running domains. A second hind can be seen at HDMI display:
+**DomU** has been deleted at list running domains. A second hint can be seen at HDMI display:
 
 One of the menu bars of **Weston** has been removed.
 

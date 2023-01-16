@@ -6,9 +6,9 @@
 
 [place holder for start of short list of ## Functionalities]: # (This is used by tool to create a short content list as start point)
 
-[Look network configuration at DomD](#look-network-configuration-at-domd)
+[Show network configuration at DomD](#show-network-configuration-at-domd)
 
-[Look network configuration at DomU](#look-network-configuration-at-domu)
+[Show network configuration at DomU](#show-network-configuration-at-domu)
 
 [Get ssh access to DomD](#get-ssh-access-to-domd)
 
@@ -27,7 +27,7 @@ The XEN system with DomD and DomU provides some interesting functions like SSH c
 
 ## Functionalities
 
-### Look network configuration at DomD
+### Show network configuration at DomD
 
 At first change to DomD like described at [Attach console to DomD](Dom0-1stactivities.md#attach-console-to-domd). Then get the state of the nework with **ifconfig**.
 
@@ -76,7 +76,7 @@ root@h3ulcb-domd:~#
 
 Here **eth0** points to physical ethernet interface. **xenbr0** implements an XEN internal network bridge with connection to **ETH0** and implements a subnet **192.168.0/24** (with DHCP). 
 
-### Look network configuration at DomU
+### Show network configuration at DomU
 
 Now go back to **Domain-0** with **CTRL 5** and change to **DomU** with **xl console DomU** described at [Attach console to DomU](Dom0-1stactivities.md#attach-console-to-domu). Then get the state of the nework with **ifconfig**.
 

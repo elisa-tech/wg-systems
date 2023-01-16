@@ -8,7 +8,7 @@
 
 [Configuration of U-Boot](#configuration-of-u-boot)
 
-[Start the image](#start-the-image)
+[Start the system image](#start-the-system-image)
 
 [Login to Dom0](#login-to-dom0)
 
@@ -44,9 +44,9 @@ Please set the environment of U-boot to defaults with
 
 [Setup U-boot](https://github.com/xen-troops/meta-xt-prod-devel-rcar/blob/master/doc/u-boot-env.md#common-settings-recommended-for-any-boot-device) describes the basic steps. At built U-boot most steps are preconfigured. 
 
-### Start the image
+### Start the system image
 
-If image is flashed to SD card, it is started from U-Boot prompt with:
+If the system image is flashed to SD card, it is started from U-Boot prompt with:
 
     run bootcmd_sd0
 
