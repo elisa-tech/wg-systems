@@ -1,0 +1,818 @@
+From 5e6af839617baa2489b13b5f260910e6f7d0f1db Mon Sep 17 00:00:00 2001
+From: Thomas Mittelstaedt <thomas.mittelstaedt@de.bosch.com>
+Date: Tue, 25 Jul 2023 03:57:47 +0000
+Subject: [PATCH] Changes for Initrd
+
+Signed-off-by: Thomas Mittelstaedt <thomas.mittelstaedt@de.bosch.com>
+---
+ image-initrd.yaml                             | 182 ++++++++++++++++
+ ospack-nano.yaml                              | 201 ++++++++++++++++++
+ .../share/initramfs-tools/modules.d/initrd    |   4 +
+ .../etc/systemd/network/uplink.network        |   6 +
+ .../usr/lib/tmpfiles.d/systemd-resolve-x.conf |  10 +
+ overlays/virtio/keepall.lst                   | 107 ++++++++++
+ .../share/initramfs-tools/modules.d/virtio    |   7 +
+ scripts/cleanout_kernelmodules.sh             |  63 ++++++
+ scripts/dir2uinitrd.sh                        |  44 ++++
+ scripts/setbusybox2mainsys.sh                 |  49 +++++
+ scripts/uinitrd2dir.sh                        |  45 ++++
+ 11 files changed, 718 insertions(+)
+ create mode 100644 image-initrd.yaml
+ create mode 100644 ospack-nano.yaml
+ create mode 100644 overlays/initrd/usr/share/initramfs-tools/modules.d/initrd
+ create mode 100644 overlays/systemd-network-d/etc/systemd/network/uplink.network
+ create mode 100644 overlays/systemd-network-d/usr/lib/tmpfiles.d/systemd-resolve-x.conf
+ create mode 100644 overlays/virtio/keepall.lst
+ create mode 100644 overlays/virtio/usr/share/initramfs-tools/modules.d/virtio
+ create mode 100755 scripts/cleanout_kernelmodules.sh
+ create mode 100755 scripts/dir2uinitrd.sh
+ create mode 100755 scripts/setbusybox2mainsys.sh
+ create mode 100755 scripts/uinitrd2dir.sh
+
+diff --git a/image-initrd.yaml b/image-initrd.yaml
+new file mode 100644
+index 0000000..d689b65
+--- /dev/null
++++ b/image-initrd.yaml
+@@ -0,0 +1,182 @@
++{{ $architecture := or .architecture "arm64" }}
++{{ $type := or .type "fixedfunction" }}
++{{ $suite := or .suite "v2022" }}
++{{ $ospack := or .ospack (printf "ospack_%s-%s-%s" $suite $architecture $type) }}
++{{ $image := or .image (printf "apertis-%s-%s-%s" $suite  $type $architecture) }}
++
++{{ $cmdline := or .cmdline "rootwait rw quiet splash plymouth.ignore-serial-consoles fsck.mode=auto fsck.repair=yes" }}
++
++{{ $demopack := or .demopack "disabled" }}
++{{ if eq $type "fixedfunction" }}
++{{ $demopack := "disabled" }}
++{{ end }}
++
++{{- $unpack := or .unpack "true" }}
++
++architecture: {{ $architecture }}
++
++actions:
++{{- if eq $unpack "true" }}
++  - action: unpack
++    description: Unpack {{ $ospack }}
++    compression: gz
++    file: {{ $ospack }}.tar.gz
++{{- end }}
++
++  - action: overlay
++    description: Set the default bootcounter
++    source: overlays/default-uboot-bootcount
++
++  - action: overlay
++    description: "Enable USB automount"
++    source: overlays/usb-automount-rules
++
++  - action: overlay
++    source: overlays/initramfs-modules-{{$architecture}}
++
++  - action: overlay
++    source: overlays/virtio
++
++  - action: overlay
++    source: overlays/initrd
++
++  - action: apt
++    description: Kernel and system packages
++    packages:
++      - kmod
++      - linux-base
++{{ if eq $architecture "armhf" }}
++      - linux-image-armmp
++{{ else }}
++      - linux-image-{{$architecture}}
++{{ end }}
++
++  - action: run
++    chroot: true
++    command: ln -s /sbin/init /init
++
++  - action: run
++    description: Remove option at systemd service file
++    chroot: false
++    command:  sed -i '/PrivateTmp=yes/d' $ROOTDIR/lib/systemd/system/systemd-timedated.service
++
++  - action: run
++    description: Remove option at systemd journal configuration
++    chroot: false
++    command:  sed -i 's/#Storage=auto/Storage=volatile/' $ROOTDIR/etc/systemd/journald.conf
++
++  - action: run
++    chroot: true
++    command: apt -y autoremove
++
++  - action: run
++    description: Remove linux installation files
++    chroot: true
++    command: rm -rf /usr/lib/linux-image*  
++    
++  - action: run
++    description: Extract initrd
++    chroot: false
++    script: scripts/uinitrd2dir.sh ${ROOTDIR}/boot/initrd.img* initrd.dir  
++  
++  - action: run
++    description: Remove duplicates
++    chroot: false
++    script: scripts/cleanout_kernelmodules.sh initrd.dir
++
++  - action: run
++    description: Create a directory with version info
++    chroot: false
++    command: mkdir -p ${ARTIFACTDIR}/{{ $image }}
++
++  - action: run
++    description: Copy Linux image
++    chroot: false
++    command: cp ${ROOTDIR}/boot/vmlinuz* ${ARTIFACTDIR}/{{ $image }}/Image
++  
++  - action: run
++    description: Copy Linux image device tree
++    chroot: false
++    command: mkdir -p ${ARTIFACTDIR}/{{ $image }}/dtbs; cp -r ${ROOTDIR}/boot/dtbs/*/* ${ARTIFACTDIR}/{{ $image }}/dtbs/
++
++  - action: run
++    description: Remove created initrd.dir
++    chroot: false
++    command: rm -rf initrd.dir
++  
++  - action: run
++    description: Remove boot files
++    chroot: true
++    command: rm -rf /boot/*  
++    
++  - action: run
++    description: Remove some files
++    chroot: false
++    command: rm -rf ${ROOTDIR}/dev/* ${ROOTDIR}/usr/share/doc* ${ROOTDIR}/usr/share/man* ${ROOTDIR}/var/cache/* 
++
++  - action: run
++    description: Switch to live APT repos
++    chroot: true
++    script: scripts/switch-apt-to-live.sh -r {{ $suite }}
++
++  - action: run
++    description: "Save installed package status"
++    chroot: false
++    command: gzip -c "${ROOTDIR}/var/lib/dpkg/status" > "${ARTIFACTDIR}/{{ $image }}.img.pkglist.gz"
++
++  - action: run
++    description: Cleanup /var/lib
++    script: scripts/remove_var_lib_parts.sh
++
++  # the clearing of machine-id can't be done before this point since
++  # systemd-boot requires the machine-id to be set for reasons related to
++  # dual-boot scenarios:
++  # * to avoid conflicts when creating entries, see the `90-loaderentry` kernel
++  #   install trigger
++  # * to set the entries for the currently booted installation as default in
++  #   the loader.conf generated by `bootctl install`
++  #
++  # in our image this is not useful, as the actual machine-id is supposed to be
++  # uniquely generated on the first boot. however the impact is negligible, as
++  # things still work albeit the code used to potentially disambiguate entries
++  # doesn't match a real machine-id
++  - action: run
++    chroot: false
++    description: "Empty /etc/machine-id so it's regenerated on first boot with an unique value"
++    command: truncate -s0 "${ROOTDIR}/etc/machine-id"
++
++  - action: run
++    description: Generate BOM file
++    chroot: false
++    script: scripts/generate_bom.py -d "${ROOTDIR}/usr/share/doc" -s "${ROOTDIR}/var/lib/dpkg/status" -w "${RECIPEDIR}/copyright.whitelist" -v 2 > ${ARTIFACTDIR}/{{ $image }}.img.licenses
++
++  - action: run
++    description: Delete /usr/share/doc
++    chroot: false
++    command: rm -rf "${ROOTDIR}"/usr/share/doc/*
++
++  - action: run
++    description: List files on {{ $image }}
++    chroot: false
++    script: scripts/list-files "$ROOTDIR" | gzip > "${ARTIFACTDIR}/{{ $image }}.img.filelist.gz"
++
++  - action: run
++    description: "Enable all possible busybox commands"
++    chroot: true
++    script: scripts/setbusybox2mainsys.sh notinst
++    
++    
++  - action: run
++    description: "Building {{ $image }} and {{ $image }}.uimage"
++    script: scripts/dir2uinitrd.sh  ${ROOTDIR} "${ARTIFACTDIR}/{{ $image }}/Initrd" {{ $architecture }} 
++    
++    # put all together
++  - action: run
++    description: Save artifacts (device trees, Image, Initrd) to an extra file irdsys.{{ $image }}.tar.gz
++    command: (cd ${ARTIFACTDIR} && tar czf ${ARTIFACTDIR}/irdsys.{{ $image }}.tar.gz {{ $image }}) 
++    
++    # clean up
++  - action: run
++    description: Remove unneeded artifacts 
++    command: (cd ${ARTIFACTDIR} && rm -rf {{ $image }})
++
+diff --git a/ospack-nano.yaml b/ospack-nano.yaml
+new file mode 100644
+index 0000000..dfea38d
+--- /dev/null
++++ b/ospack-nano.yaml
+@@ -0,0 +1,201 @@
++{{- $architecture := or .architecture "amd64" }}
++{{- $type := or .type "nano" -}}
++{{- $mirror := or .mirror "https://repositories.apertis.org/apertis/" -}}
++{{- $suite := or .suite "v2022" -}}
++{{- $timestamp := or .timestamp "" -}}
++{{- $snapshot := or .snapshot "" -}}
++{{- $ospack := or .ospack (printf "ospack_%s-%s-%s" $suite $architecture $type) -}}
++{{- $pack := or .pack "true" -}}
++{{- $stable := or .stable "" -}}
++{{- $osname := or .osname "apertis" -}}
++{{- $keyring := or .keyring (printf "%s-archive-keyring" $osname) -}}
++
++architecture: {{ $architecture }}
++
++actions:
++  - action: debootstrap
++    suite: {{if eq $snapshot ""}} {{ $suite }} {{else}} {{ $suite }}/snapshots/{{ $snapshot }} {{end}}
++    components:
++      - target
++    mirror: {{ $mirror }}
++    variant: minbase
++    keyring-package: {{ $keyring }}
++    keyring-file: keyring/{{ $keyring }}.gpg
++    merged-usr: true
++
++  - action: overlay
++    source: overlays/locale-default-c-utf8
++
++  - action: overlay
++    description: Work around "Hash Sum Mismatch" errors, https://phabricator.collabora.com/T15071
++    source: overlays/apt-disable-http-pipelining
++
++  - action: run
++    description: "Add extra apt sources"
++    chroot: true
++    script: scripts/apt_source.sh -m {{ $mirror }} -r {{ $suite }} {{if eq $stable "true"}} --updates --security {{end}} target {{if ne $snapshot ""}} --snapshot {{ $snapshot }} {{end}}
++
++  - action: run
++    description: "Add non-free apt source"
++    chroot: true
++    script: scripts/apt_source.sh -m {{ $mirror }} -r {{ $suite }} {{if eq $stable "true"}} --updates --security {{end}} non-free {{if ne $snapshot ""}} --snapshot {{ $snapshot }} {{end}}
++
++  - action: overlay
++    source: overlays/dpkg-exclusions-docs
++
++  - action: overlay
++    source: overlays/dpkg-exclusions-fixedfunction
++
++  - action: apt
++    description: "Core packages"
++    packages:
++      - sudo
++      - ca-certificates
++      - initramfs-tools
++      - libnss-myhostname
++
++  - action: apt
++    description: "Base packages"
++    packages:
++      - busybox
++      - dbus-user-session
++
++  - action: apt
++    description: "Networking packages"
++    packages:
++      - netbase
++
++  - action: apt
++    description: "Test environment packages"
++    packages:
++      - net-tools
++      - openssh-client
++      - openssh-server
++      - vim.tiny
++
++  - action: run
++    description: Set the hostname
++    chroot: false
++    command: echo "{{ $osname }}-nano" > "$ROOTDIR/etc/hostname"
++
++  - action: overlay
++    source: overlays/default-hosts
++
++  - action: overlay
++    source: overlays/machine-info
++
++  - action: overlay
++    source: overlays/loopback-interface
++
++  - action: overlay
++    source: overlays/media-tmpfs
++
++  - action: overlay
++    source: overlays/create-homedir
++
++  - action: overlay
++    source: overlays/sudo-fqdn
++
++  - action: overlay
++    source: overlays/apertis-dev
++
++  - action: overlay
++    source: overlays/fsck
++
++  - action: overlay
++    source: overlays/systemd-network-d
++
++  - action: run
++    chroot: true
++    description: "Enable /tmp mount"
++    script: scripts/enable-tmpfs.sh
++
++  - action: run
++    chroot: true
++    script: scripts/add-xdg-user-metadata.sh
++
++  - action: run
++    chroot: true
++    script: scripts/create-mtab-symlink.hook.sh
++
++  - action: run
++    chroot: true
++    script: scripts/setup_user.sh
++
++  - action: run
++    chroot: true
++    script: scripts/add_user_to_groups.sh
++
++  - action: run
++    chroot: true
++    script: scripts/check_sudoers_for_admin.sh
++
++  - action: run
++    chroot: true
++    script: scripts/generate_openssh_keys.sh
++
++  - action: run
++    chroot: true
++    script: scripts/add-initramfs-modules.sh
++
++  - action: run
++    description: "Enable all possible busybox commands"
++    chroot: true
++    script: scripts/setbusybox2mainsys.sh full
++
++  - action: run
++    chroot: true
++    description: "Disable daily apt download, upgrade and clean activities, https://phabricator.apertis.org/T6341"
++    command: systemctl disable apt-daily.timer apt-daily-upgrade.timer
++
++  - action: run
++    chroot: true
++    description: "Disable systemd-timesyncd service by default"
++    command: systemctl disable systemd-timesyncd
++
++  ## Disable fstrim timer and service since they trigger FS issues
++  ## https://gitlab.apertis.org/infrastructure/apertis-issues/-/issues/70
++  - action: run
++    chroot: true
++    description: "Disable fstrim.timer by default"
++    command: systemctl disable fstrim.timer
++
++  - action: run
++    chroot: true
++    description: "Disable fstrim.service by default"
++    command: systemctl disable fstrim.service
++
++  ## Disable systemd-backlight service on leds:asus::kbd_backlight as this is
++  ## failing on the UP Squared 6000 board.
++  ## https://gitlab.apertis.org/infrastructure/apertis-issues/-/issues/163
++  - action: run
++    chroot: true
++    description: "Mask systemd-backlight@leds:asus::kbd_backlight.service by default"
++    command: systemctl mask systemd-backlight@leds:asus::kbd_backlight.service
++
++  - action: run   
++    chroot: true
++    description: "Enable systemd-networkd and systemd-resolved"
++    command: systemctl enable systemd-networkd systemd-resolved
++
++  # Add image version information
++  - action: run
++    description: "Setting up image version metadata"
++    chroot: true
++    script: scripts/setup_image_version.sh {{ $osname }} {{ $suite }} '{{ $timestamp }}' collabora {{ $type }}
++
++{{- if eq $pack "true" }}
++  - action: run
++    description: "Save installed package status"
++    chroot: false
++    command: gzip -c "${ROOTDIR}/var/lib/dpkg/status" > "${ARTIFACTDIR}/{{ $ospack }}.pkglist.gz"
++
++  - action: run
++    description: List files on {{ $ospack }}
++    chroot: false
++    script: scripts/list-files "$ROOTDIR" | gzip > "${ARTIFACTDIR}/{{ $ospack }}.filelist.gz"
++
++  - action: pack
++    compression: gz
++    file: {{ $ospack }}.tar.gz
++{{- end }}
+diff --git a/overlays/initrd/usr/share/initramfs-tools/modules.d/initrd b/overlays/initrd/usr/share/initramfs-tools/modules.d/initrd
+new file mode 100644
+index 0000000..b6da9c7
+--- /dev/null
++++ b/overlays/initrd/usr/share/initramfs-tools/modules.d/initrd
+@@ -0,0 +1,4 @@
++fat
++vfat 
++nls_ascii
++nls_cp437
+diff --git a/overlays/systemd-network-d/etc/systemd/network/uplink.network b/overlays/systemd-network-d/etc/systemd/network/uplink.network
+new file mode 100644
+index 0000000..5328bee
+--- /dev/null
++++ b/overlays/systemd-network-d/etc/systemd/network/uplink.network
+@@ -0,0 +1,6 @@
++[Match]
++Name=*
++Type=ether
++[Network]
++DHCP=ipv4
++UseDomains=true
+diff --git a/overlays/systemd-network-d/usr/lib/tmpfiles.d/systemd-resolve-x.conf b/overlays/systemd-network-d/usr/lib/tmpfiles.d/systemd-resolve-x.conf
+new file mode 100644
+index 0000000..cb1c56d
+--- /dev/null
++++ b/overlays/systemd-network-d/usr/lib/tmpfiles.d/systemd-resolve-x.conf
+@@ -0,0 +1,10 @@
++#  This file is part of systemd.
++#
++#  systemd is free software; you can redistribute it and/or modify it
++#  under the terms of the GNU Lesser General Public License as published by
++#  the Free Software Foundation; either version 2.1 of the License, or
++#  (at your option) any later version.
++
++# See tmpfiles.d(5) for details
++
++L! /etc/resolv.conf - - - - ../run/systemd/resolve/stub-resolv.conf
+diff --git a/overlays/virtio/keepall.lst b/overlays/virtio/keepall.lst
+new file mode 100644
+index 0000000..3aa33e8
+--- /dev/null
++++ b/overlays/virtio/keepall.lst
+@@ -0,0 +1,107 @@
++rfkill
++iptable_nat
++nf_nat
++iptable_mangle
++iptable_filter
++ip6t_REJECT
++nf_reject_ipv6
++ipt_REJECT
++nf_reject_ipv4
++xt_tcpudp
++xt_state
++xt_conntrack
++nf_conntrack
++nf_defrag_ipv6
++nf_defrag_ipv4
++nft_compat
++nf_tables
++libcrc32c
++nfnetlink
++aes_ce_blk
++aes_ce_cipher
++rcar_du_drm
++rcar_mipi_dsi
++polyval_ce
++polyval_generic
++rcar_lvds
++ghash_ce
++gf128mul
++vsp1
++videobuf2_vmalloc
++sha2_ce
++videobuf2_dma_contig
++sha256_arm64
++snd_soc_rcar
++snd_soc_ak4613
++videobuf2_memops
++sha1_ce
++videobuf2_v4l2
++videobuf2_common
++snd_soc_core
++drm_dma_helper
++snd_pcm_dmaengine
++videodev
++snd_pcm
++rcar_cmm
++mc
++rcar_fcp
++snd_timer
++snd
++display_connector
++soundcore
++drm_kms_helper
++leds_gpio
++evdev
++cpufreq_dt
++fuse
++configfs
++ip_tables
++x_tables
++autofs4
++ext4
++crc16
++mbcache
++jbd2
++crc32c_generic
++micrel
++virtio_mmio
++virtio_balloon
++virtio_pci
++virtio_pci_legacy_dev
++virtio_pci_modern_dev
++virtio_console
++virtio_blk
++virtio_net
++net_failover
++failover
++panfrost
++drm_shmem_helper
++gpu_sched
++drm
++governor_simpleondemand
++cls_cgroup
++crct10dif_ce
++crct10dif_common
++ohci_platform
++ravb
++ohci_hcd
++mdio_bitbang
++ehci_platform
++ehci_hcd
++of_mdio
++fixed_phy
++fwnode_mdio
++renesas_sdhi_internal_dmac
++phy_rcar_gen3_usb2
++renesas_sdhi_core
++tmio_mmc_core
++usbcore
++usb_common
++libphy
++ptp
++pps_core
++i2c_rcar
++i2c_smbus
++gpio_regulator
++fixed
++gpio_keys
+diff --git a/overlays/virtio/usr/share/initramfs-tools/modules.d/virtio b/overlays/virtio/usr/share/initramfs-tools/modules.d/virtio
+new file mode 100644
+index 0000000..efa9472
+--- /dev/null
++++ b/overlays/virtio/usr/share/initramfs-tools/modules.d/virtio
+@@ -0,0 +1,7 @@
++virtio_net
++virtio_blk
++virtio_net 
++virtio_console
++virtio_pci
++virtio_balloon 
++virtio_mmio 
+diff --git a/scripts/cleanout_kernelmodules.sh b/scripts/cleanout_kernelmodules.sh
+new file mode 100755
+index 0000000..a888901
+--- /dev/null
++++ b/scripts/cleanout_kernelmodules.sh
+@@ -0,0 +1,63 @@
++#!/bin/bash
++
++check_km_path() {
++local f=$1
++local delete
++local filename=$(basename $f)
++local keep
++local baseid=${filename%%.*}
++
++  if [ -n "${keepmods[$baseid]}" ]; then
++    keep=y
++  fi
++  if [ -n "$keep" ]; then
++    if [  ! -f "${SDIR}/$f" ]; then
++      echo "keeping($baseid) $filename"
++    else
++      echo "part of system $filename"
++    fi
++  elif [  ! -f "${SDIR}/$f" ]; then
++    delete='y'
++  fi
++  if [ -n "$delete" ]; then
++    echo rm -f "${TDIR}/$f"
++    rm -f "${TDIR}/$f"
++  fi 
++}
++
++SDIR=$(realpath $1)
++TDIR=$(realpath ${ROOTDIR})
++if [ -f "$2" ]; then
++  EXTRAFILES=$(realpath $2)
++fi
++if [ -f "$3" ]; then
++  DELFILES=$(realpath $3)
++fi
++
++declare -A keepmods
++
++if [ -n "$EXTRAFILES" ]; then
++  if [ -f "$EXTRAFILES"  ]; then
++    while read FILENAME
++    do
++      keepmods[$FILENAME]='y'
++      FILENAMEX=${FILENAME//-/_}
++      keepmods[$FILENAMEX]='y'
++      FILENAMEX=${FILENAME//_/-}
++      keepmods[$FILENAMEX]='y'
++    done <  "$EXTRAFILES"
++  else
++    echo "Can't find $EXTRAFILES"
++    exit 1
++  fi
++fi
++
++
++OLDIR=$PWD
++
++cd $TDIR
++
++find -type f -name "*.ko" | while read file; do check_km_path "$file"; done
++
++find /lib/modules -empty -type d -delete 
++
+diff --git a/scripts/dir2uinitrd.sh b/scripts/dir2uinitrd.sh
+new file mode 100755
+index 0000000..201ce88
+--- /dev/null
++++ b/scripts/dir2uinitrd.sh
+@@ -0,0 +1,44 @@
++#!/bin/bash
++
++ARCH=${3:-arm64}
++INITRD=$2
++DIRECTORY=$1
++UARCH=
++
++if [ $ARCH == "armhf" ]; then
++  UARCH=arm
++elif [ $ARCH == "arm64" ]; then
++  UARCH=arm64
++elif [ $ARCH == "amd64" ]; then
++  UARCH=x86
++else
++  echo "Unknown architecture"
++  exit 1  
++fi    
++
++if [ "$INITRD" = "" ]; then
++  HELP=1 
++fi
++if [ "$DIRECTORY" = "" ]; then
++  HELP=1 
++fi
++if [ ! "$HELP" = "" ]; then
++  echo "dir2uinitrdr.sh <Direc> <uInitrd>"
++  exit 0
++fi
++TMPFILE=`mktemp`
++pushd $DIRECTORY
++find . | cpio --create --format='newc' > "$TMPFILE".cpio
++popd
++
++if [ -e "$TMPFILE.cpio.gz" ]; then
++  rm "$TMPFILE".cpio.gz
++fi
++gzip "$TMPFILE".cpio
++mkimage -A $UARCH -T ramdisk -O linux -d "$TMPFILE".cpio.gz $INITRD.uimage
++cp "$TMPFILE".cpio.gz $INITRD
++rm "$TMPFILE"*
++
++
++
++
+diff --git a/scripts/setbusybox2mainsys.sh b/scripts/setbusybox2mainsys.sh
+new file mode 100755
+index 0000000..8059ebe
+--- /dev/null
++++ b/scripts/setbusybox2mainsys.sh
+@@ -0,0 +1,49 @@
++#!/bin/sh
++
++#set -e
++
++BINDIR=/usr/local/bin
++
++MODE=$1 # full=replace all busybox commands but execptions
++		# notinst=replace all busybox commands but execptions and installed
++		# clean=remove all busybox commands
++
++if command -v busybox > /dev/null; then
++
++  if test "$MODE" = clean; then
++    for cmd in $(busybox --list);
++    do
++      if test -f "$BINDIR/$cmd" ;then
++        rm "$BINDIR/$cmd"
++      fi  
++    done
++    exit 0  
++  fi 
++
++  echo "Ínstalling Busybox commands with mode=$MODE"
++  NO_REPLACE_EXTRA=
++  if test "$MODE" = notinst; then 
++    for cmd in $(busybox --list);
++    do
++      cmdpath=$(command -v "$cmd" )
++      if test "$cmdpath" != "$BINDIR/$cmd" ;then
++        if test -n "$cmdpath"; then
++#          echo "Disable $cmd"
++          NO_REPLACE_EXTRA="$NO_REPLACE_EXTRA $cmd"
++        fi
++      fi  
++    done  
++  fi
++  busybox --install -s $BINDIR
++  for cmd in mount mktemp cmp reboot run-parts tar wget $NO_REPLACE_EXTRA
++  do
++      if [ -f "$BINDIR/$cmd" ]; then
++        rm "$BINDIR/$cmd"
++      fi
++  done   
++  if [ -f /bin/env ] && [ -f "$BINDIR/env" ]; then
++      mv /bin/env /bin/env.org 
++      mv  $BINDIR/env /bin/env
++  fi
++fi
++exit 0
+diff --git a/scripts/uinitrd2dir.sh b/scripts/uinitrd2dir.sh
+new file mode 100755
+index 0000000..4cb8164
+--- /dev/null
++++ b/scripts/uinitrd2dir.sh
+@@ -0,0 +1,45 @@
++#!/bin/bash
++
++UINITRD=$1
++DIRECTORY=$2
++OPTION=$3
++
++if [ "$UINITRD" = "" ]; then
++  HELP=1 
++fi
++if [ "$DIRECTORY" = "" ]; then
++  HELP=1 
++fi
++if [ ! "$HELP" = "" ]; then
++  echo "uinitrd2dir.sh <uInitrd> <Direc>"
++  exit 0
++fi
++if [ ! -d "$DIRECTORY" ]; then
++  mkdir -p $DIRECTORY
++else
++  sudo rm -r -f $DIRECTORY/*
++fi
++#TMPFILE=`mktemp`
++TMPFILE="$(realpath $(dirname $DIRECTORY))/$(basename $UINITRD).tmpu2d"
++
++if (file $UINITRD | grep 'gzip compressed'); then
++  cp "$UINITRD" "$TMPFILE".cpio.gz
++  UINITRD=y
++else
++  dd if="$UINITRD" of="$TMPFILE".cpio.gz bs=64 skip=1
++fi
++gunzip "$TMPFILE".cpio.gz
++pushd $DIRECTORY
++fakeroot cpio -i  < "$TMPFILE".cpio
++if [ ! -z "$UINITRD" ]; then
++  touch ./uinitrd
++else
++  touch ./cpiord
++fi
++popd
++if test "$OPTION" != "keep"; then
++  rm "$TMPFILE"*
++fi
++
++
++
+-- 
+2.30.2
+
