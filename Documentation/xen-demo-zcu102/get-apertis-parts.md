@@ -38,7 +38,7 @@ The given image recipe creates an archive **irdsys.image-nano-initrd.tar.gz** wi
 
     tar xf irdsys.image-nano-initrd.tar.gz # will be extracted to a directory image-nano-initrd
 
-##  Artefacts to be used as parts
+##  <a name="artefacts"></a>Artefacts to be used as parts
 
   * image-nano-initrd/**Image**
   * image-nano-initrd/**Initrd**

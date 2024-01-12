@@ -9,6 +9,11 @@
 
 [Build parts of Domain-0 with XEN](cr-xen-parts.md)
 
+[Create XEN demo and boot images with a simple script](cr-image-script.md)
+
+[Setup Qemu system with demo and boot image](setup-qemu.md)
+
+
 ## Get parts for VM's
 
 [Get parts of Apertis system](get-apertis-parts.md)

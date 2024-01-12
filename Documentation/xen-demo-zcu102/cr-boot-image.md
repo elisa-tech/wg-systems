@@ -7,7 +7,7 @@ This description explains the setup of a boot image at SD card slot of ZCU102. T
 ## General
 The image has a MSDOS partitioning scheme with one fat formatted partition. There are multiple ways to create such a SD card, but
 this description bases on following tools:
-
+<a name="debos"></a>
 - Debos: Image creation tool, available at Debian. Description at <https://packages.debian.org/bullseye/debos>
 - Bmaptool: Image writing tool. Description at <https://packages.debian.org/bullseye/bmap-tools>
 

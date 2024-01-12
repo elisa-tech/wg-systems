@@ -53,7 +53,7 @@ It's assumed, the yocto project is still the active working directory. Then the 
 
     MACHINE=zcu102-zynqmp bitbake xen-image-minimal
 
-##  Artefacts to be used as parts
+##  <a name="artefacts"></a>Artefacts to be used as parts
 
 To prevent a complex name handling, the filenames are simplified.
 
@@ -63,6 +63,27 @@ To prevent a complex name handling, the filenames are simplified.
   * build/tmp/deploy/images/zcu102-zynqmp/devicetree/**system-top.dtb** has to be renamed to **system.dtb**
   * build/tmp/deploy/images/zcu102-zynqmp/**Image-*.bin** has to be renamed to **Image**
 
+## <a name="artefactsqemu"></a>Artifacts to be used with Qemu(Xilinx)
+
+Please have a look to run **Qemu** at [Setup Qemu system with demo and boot image](setup-qemu.md)
+
+### arm-trusted-firmware.elf
+  * build/tmp/deploy/images/zcu102-zynqmp/arm-trusted-firmware.elf
+
+### pmu-firmware-zcu102-zynqmp.elf
+  * build/tmp/deploy/images/zcu102-zynqmp/pmu-firmware-zcu102-zynqmp.elf
+
+### pmu-rom.elf
+  * build/tmp/deploy/images/zcu102-zynqmp/pmu-rom.elf
+
+### u-boot.elf
+  * build/tmp/deploy/images/zcu102-zynqmp/u-boot.elf
+
+### zcu102-arm.dtb
+  * build/tmp/deploy/images/zcu102-zynqmp/qemu-hw-devicetrees/zcu102-arm.dtb
+
+### zynqmp-pmu.dtb
+  * build/tmp/deploy/images/zcu102-zynqmp/qemu-hw-devicetrees/zynqmp-pmu.dtb
 
 
 
