@@ -3,7 +3,7 @@
 
 architecture: {{ $architecture }}
 
-{{ $size := or .size "2G" }}
+{{ $size := or .size "2147483648B" }}
 {{ $ptype := or .ptype "msdos" }}
 
 actions:
@@ -12,7 +12,7 @@ actions:
     imagesize: {{ $size }}
     partitiontype: {{ $ptype }}
     partitions:
-      - name: boot
+      - name: bootsd
         fs: vfat
         start: 0%
         end: 1G
