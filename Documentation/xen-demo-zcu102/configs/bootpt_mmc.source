@@ -1,0 +1,21 @@
+load ${devtype} 0:1 0xE00000 Image
+setenv Imagesize $filesize
+load ${devtype} 0:1 0x6200000 xen-rootfs.cpio.gz
+setenv Initrdsize $filesize
+load ${devtype} 0:1 0x5C00000 xen
+load ${devtype} 0:1 0x5E00000 system.dtb
+fdt addr 0x5E00000
+fdt resize 1024
+fdt set /chosen \#address-cells <0x2>
+fdt set /chosen \#size-cells <0x2>
+fdt set /chosen xen,xen-bootargs "console=dtuart dtuart=serial0 dom0_mem=1024M dom0_max_vcpus=1 bootscrub=0 vwfi=native sched=null  "
+fdt mknod /chosen dom0
+fdt set /chosen/dom0 compatible  "xen,linux-zimage" "xen,multiboot-module" "multiboot,module"
+fdt set /chosen/dom0 reg <0x0 0xE00000 0x0 0x${Imagesize} >
+fdt set /chosen xen,dom0-bootargs "console=hvc0 earlycon=xen earlyprintk=xen clk_ignore_unused root=/dev/ram0"
+fdt mknod /chosen dom0-ramdisk
+fdt set /chosen/dom0-ramdisk compatible  "xen,linux-initrd" "xen,multiboot-module" "multiboot,module"
+fdt set /chosen/dom0-ramdisk reg <0x0 0x6200000 0x0 0x${Initrdsize} >
+fdt set /axi/mmc@ff170000 xen,passthrough 
+setenv fdt_high 0xffffffffffffffff
+booti 0x5C00000 - 0x5E00000

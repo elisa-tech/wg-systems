@@ -1,0 +1,11 @@
+if test "x${bmode}" = "x"; then
+  load ${devtype} 0:1 $scriptaddr boot_n.scr
+  source $scriptaddr
+elif test "x${bmode}" = "xpt_eth"; then
+  load ${devtype} 0:1 $scriptaddr bootpt_eth.scr
+  source $scriptaddr
+elif test "x${bmode}" = "xpt_mmc"; then
+  load ${devtype} 0:1 $scriptaddr bootpt_mmc.scr
+  source $scriptaddr
+fi
+
