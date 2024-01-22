@@ -1,6 +1,6 @@
 # Create XEN demo and boot images with a simple script
 
-[Back to **Table of Contents**](contents.md)
+[Back to **Table of Contents**](Readme.md)
 
 This description explains the usage of the script [cr-image-script.sh](configs/cr-image-script.sh) as implementation example for [Setup of XEN demo image for USB stick or SD card (restricted function)](cr-demo-image.md) and [Setup of XEN boot image for SD card](cr-boot-image.md).
 

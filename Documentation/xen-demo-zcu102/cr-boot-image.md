@@ -1,6 +1,6 @@
 # Setup of XEN boot image for SD card
 
-[Back to **Table of Contents**](contents.md)
+[Back to **Table of Contents**](Readme.md)
 
 This description explains the setup of a boot image at SD card slot of ZCU102. This is only needed, when the ZCU102 board boots from SD card. Incase of booting from QSPI flash this step can be ignored.
 
