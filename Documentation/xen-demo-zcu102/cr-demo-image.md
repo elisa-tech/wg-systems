@@ -1,6 +1,6 @@
 # Setup of XEN demo image for USB stick or SD card (restricted function)
 
-[Back to **Table of Contents**](contents.md)
+[Back to **Table of Contents**](Readme.md)
 
 This description explains the setup of a demo image at USB stick, connected to ZCU102. The image can also be used at SD card, but then the **pass through** demo cases are not possible.
 

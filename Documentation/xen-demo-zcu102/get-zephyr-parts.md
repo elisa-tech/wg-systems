@@ -1,6 +1,6 @@
 # Get parts of Zephyr system
 
-[Back to **Table of Contents**](contents.md)
+[Back to **Table of Contents**](Readme.md)
 
 This description shows, how to get the parts, but will not provide them. This means, another systems can be used alternatively.
 
@@ -16,7 +16,7 @@ Installation of west environment according <https://docs.zephyrproject.org/lates
     cd zephyr/
     west build -p always -b xenvm sample/synchronization
 
-##  Artefacts to be used as parts
+##  <a name="artefacts"></a>Artefacts to be used as parts
 
   * build/zephyr/**zephyr.bin** has to be renamed to **zephyr-domz**
 

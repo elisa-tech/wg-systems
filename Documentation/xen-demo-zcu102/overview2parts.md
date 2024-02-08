@@ -1,6 +1,6 @@
 # Overview to all parts of XEN demo
 
-[Back to **Table of Contents**](contents.md)
+[Back to **Table of Contents**](Readme.md)
 
 ## Boot system and Domain-0 with XEN
 
@@ -105,6 +105,8 @@ Shell script to set up network bridge ***xenbr0***, used at [Demo case with para
 ### example-passmmc.cfg
 
 Configuration file for XEN to start VM for [Demo case with passed through SD controller](test-pt-disk.md). Provided by ![example-passmmc.cfg](./configs/example-passmmc.cfg).
+
+<a name="dtbsnippets"></a>
 
 ### passthrough-example-part_mmc.dtb
 Device tree snippet for [Demo case with passed through SD controller](test-pt-disk.md). This file is generated from <https://github.com/Xilinx/xen-passthrough-device-trees/blob/master/device-trees-2021.2/zcu102/mmc%40ff170000.dts> and has to be created by

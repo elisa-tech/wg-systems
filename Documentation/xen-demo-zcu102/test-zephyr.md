@@ -1,6 +1,6 @@
 # Demo case with Zephyr VM
 
-[Back to **Table of Contents**](contents.md)
+[Back to **Table of Contents**](Readme.md)
 
 ## Setup and parts
 
@@ -54,6 +54,7 @@ Domain-0                                     0  1024     1     r-----     467.7
 DomZ                                         1    16     1     r-----     247.8
 zcu102-zynqmp:/media/card$
 ...
+```
 
 ### Switch console to DomZ (Zephyr)
 
@@ -67,7 +68,7 @@ thread_b: Hello World from cpu 0 on xenvm!
 thread_a: Hello World from cpu 0 on xenvm!
 thread_b: Hello World from cpu 0 on xenvm!
 ...
-...
+```
 
 ### Getting back console to Domain-0 (XEN)
 
