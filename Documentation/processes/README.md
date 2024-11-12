@@ -12,6 +12,8 @@ This document targets to describe equivalence of established open source develop
 
 The suitability of open source practices to deliver necessary work products equivalent to those from traditional design, implementation, integration and maintenance requires further analysis. This report will identify the capabilities and possible gaps to establish equivalence between open source practices and established industry software lifecycle standards.
 
+![Change request open source flow](process-project-proposal.drawio.svg)
+
 ## Relation to functional safety
 
 Quality, Cyber Security and Functional Safety (FuSa) integrity standards aim for a certain level of reliability for the development of electronic devices with a protective function for hazardous machines and systems that reduces the risk to people and society when operating these machines and systems to an acceptable level. All these standards, although aiming for different verticals as well as different risk scenarios, address the risk reduction by raising the resilience and stability of a software project.
@@ -22,6 +24,8 @@ To address this, FuSa integrity standards such as IEC 61508 or ISO 26262 describ
 # Literature and references for open source development process
 
 IEEE computer society definition about Software quality: https://www.computer.org/resources/what-is-software-quality
+
+Producing Open Source Software - How to Run a Successful Free Software Project: https://producingoss.com/
 
 ## Linux Kernel
 
@@ -38,6 +42,18 @@ Various publications from research have been made about the open source developm
   Open Source Software (OSS) has been recognized by the software development community as an effective way to deliver software. Unlike traditional software development, OSS development is driven by collaboration among developers spread geographically and motivated by common goals and interests. Besides this fact, it is recognized by OSS community the need of understand OSS development process and its activities. Our goal is to investigate the state-of-art about OSS process through conducting a systematic literature review providing an overview of how the OSS community has been investigating OSS process over past years identifying and summarizing OSS process activities and their characteristics as well as translating OSS process in a macro process through BPMN notation. As a result, we systematically analysed 33 studies presenting an overview of the state-of-art of researches regarding OSS process, a generalized OSS development macro process represented by BPMN notation with a detailed description of each OSS process activity and roles in OSS environment. We conclude that OSS process can be in practice further investigated by researchers. In addition, the presented OSS process can be used as a guide for OSS projects and being adapted according to each OSS project reality. It provides insights to managers and developers who want to improve their development process even in OSS and traditional environments. Finally, recommendations for OSS community regarding OSS process activities are provided. 
 
 </details>
+
+<details>
+  <summary>[2] Evaluation of open source operating
+systems for safety-critical applications </summary>
+  
+  Link: [Chalmers Master Thesis](https://odr.chalmers.se/server/api/core/bitstreams/3c83d9c5-e4ea-4ecc-b43a-7035a756ce1f/content)
+  
+  **Abstract**
+  Today many embedded applications will have to handle multitasking with real-time time constraints and the solution for handling multitasking is to use a real-time operating system for scheduling and managing the real-time tasks. There are many different open source real-time operating systems available and the use of open source software for safety-critical applications is considered highly interesting by industries such as medical, aerospace and automotive as it enables a shorter time to market and lower development costs. If one would like to use open source software in a safety-critical context one would have to provide evidence that the software being used fulfills the requirement put forth by the industry specific standard for functional safety, such as the ISO 26262 standard for the automotive industry. However, the standards for functional safety do not provide a clear method for how one would go about certifying open source software. Therefore, in this thesis we present identified important characteristics that can be used for comparing the suitability of open source based real-time operating systems for use in safety-critical applications together with a proposed outline for a methodology that can be used for certifying an open source real-time operating system. A case study has been done where we compared two open source operating systems for small microcontrollers with the previously mentioned characteristics in order to see which of the two is most suitable for use in safety-critical applications. The most suitable candidate is then assessed in order to see to what degree it can adhere with the requirements put forth in the widely used functional safety standards IEC 61508 and ISO 26262.
+
+</details>
+
 
 # Code first/driven development process
 
