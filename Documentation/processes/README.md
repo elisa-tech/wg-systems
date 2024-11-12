@@ -12,7 +12,7 @@ This document targets to describe equivalence of established open source develop
 
 The suitability of open source practices to deliver necessary work products equivalent to those from traditional design, implementation, integration and maintenance requires further analysis. This report will identify the capabilities and possible gaps to establish equivalence between open source practices and established industry software lifecycle standards.
 
-![Change request open source flow](process-project-proposal.drawio.svg)
+![Work structure project proposal](process-project-proposal.drawio.svg)
 
 ## Relation to functional safety
 
