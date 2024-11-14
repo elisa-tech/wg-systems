@@ -4,5 +4,5 @@ The Systems WG aims to enable other working groups within ELISA to put their saf
 For more information read the introduction blog post: https://elisa.tech/blog/2022/06/29/elisas-new-systems-working-group/
 
 # Resources and links
-Link to the mailing list: https://lists.elisa.tech/g/systems
-Weekly meeting minutes: https://docs.google.com/document/d/1hHYmTFUG5EypyG-t9RWu1ToBUgEDso42x5fhtdjM_bQ
+Link to the mailing list: https://lists.elisa.tech/g/systems 
+Weekly meeting minutes: https://github.com/elisa-tech/wg-systems/wiki#meetings
