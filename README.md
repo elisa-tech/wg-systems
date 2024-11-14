@@ -5,4 +5,5 @@ For more information read the introduction blog post: https://elisa.tech/blog/20
 
 # Resources and links
 Link to the mailing list: https://lists.elisa.tech/g/systems 
+
 Weekly meeting minutes: https://github.com/elisa-tech/wg-systems/wiki#meetings
