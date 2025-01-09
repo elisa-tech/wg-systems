@@ -1,6 +1,6 @@
 # Demo case with simple Linux VM (Petalinux)
 
-[Back to **Table of Contents**](contents.md)
+[Back to **Table of Contents**](Readme.md)
 
 ## Setup and parts
 

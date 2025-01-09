@@ -1,13 +1,13 @@
 # Setup of XEN boot image for SD card
 
-[Back to **Table of Contents**](contents.md)
+[Back to **Table of Contents**](Readme.md)
 
 This description explains the setup of a boot image at SD card slot of ZCU102. This is only needed, when the ZCU102 board boots from SD card. Incase of booting from QSPI flash this step can be ignored.
 
 ## General
 The image has a MSDOS partitioning scheme with one fat formatted partition. There are multiple ways to create such a SD card, but
 this description bases on following tools:
-
+<a name="debos"></a>
 - Debos: Image creation tool, available at Debian. Description at <https://packages.debian.org/bullseye/debos>
 - Bmaptool: Image writing tool. Description at <https://packages.debian.org/bullseye/bmap-tools>
 
