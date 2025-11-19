@@ -25,6 +25,16 @@ landscape:
       - subcategory:
         name: Realtime
         items: []
+      - subcategory:
+        name: Virtualization
+        items:
+          - item:
+            name: Xen
+      - subcategory:
+        name: Rich OS
+        items:
+          - item: 
+            name: AutoSD
   - category:
     name: Frameworks
       - subcategory:
