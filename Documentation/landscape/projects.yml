@@ -1,0 +1,101 @@
+landscape:
+  - category:
+    name: Tools
+    subcategories:
+      - subcategory:
+        name: Compiler
+        items:
+          - item:
+            name: LLVM 
+            description: 
+            homepage_url: https://llvm.org/
+            repo_url: https://github.com/llvm
+            logo: LLVM.svg
+      - subcategory:
+        name: Requirements
+        items: []
+      - subcategory:
+        name: Static analysis
+        items: []
+      - subcategory:
+        name: Build tooling
+        items: []
+  - category:
+    name: Operating Systems
+      - subcategory:
+        name: Realtime
+        items:
+          - item: 
+            name: Zephyr
+          - item: 
+            name: ThreadX
+          - item: 
+            name: SeL4
+          - item: 
+            name: OpenBSW
+            repo_url: https://github.com/eclipse-openbsw
+
+      - subcategory:
+        name: Virtualization
+        items:
+          - item:
+            name: Xen
+          - item:
+            name: L4Re
+      - subcategory:
+        name: Rich OS
+        items:
+          - item: 
+            name: AutoSD
+            description: Community version of the commercial Red Hat In Vehicle OS targeted for ASIL-B products.
+            homepage_url: https://sigs.centos.org/automotive/
+            repo_url: https://gitlab.com/CentOS/automotive
+            tags: ISO 26262, Automotive
+          - item:
+            name: Halo OS 
+            tags: ISO 26262, Automotive
+            name: OxidOS Automotive
+            homepage_url: https://oxidos.io/
+            repo_url: https://github.com/OxidosAutomotive
+            tags: ISO 26262, Automotive
+  - category:
+    name: Frameworks
+      - subcategory:
+        name: Middleware
+        items:
+          - item:
+            name: Eclipse Safe Open Vehicle Core (S-CORE)
+          - item: 
+            name: Iceoryx
+            description: This is the original implementation of the inter-process communication middleware written in C++. For the Rust-based next-gen implementation, have a look at iceoryx2
+            homepage_url: https://iceoryx.io/
+            repo_url: https://github.com/eclipse-iceoryx/iceoryx
+           tags: C++
+          - item: 
+            name: Iceoryx2
+            description: Efficient and ultra-low latency inter-process communication middleware. This library is designed to provide fast and reliable zero-copy and lock-free inter-process communication mechanisms.
+            homepage_url: https://iceoryx.io/
+            repo_url: https://github.com/eclipse-iceoryx/iceoryx2
+            tags: Rust
+          - item:
+            name: Apex.ai
+            homepage_url: https://www.apex.ai/
+            repo_url: https://github.com/orgs/ApexAI/repositories
+      - subcategory:
+        name: Artificial Intelligence (AI)      
+  - category:
+    name: System Engineering / Lifecycle Support
+    items:
+      - item: 
+        name: ELISA
+      - item: 
+        name: SOAFEE
+      - item:
+        name: Autoware
+  - category:
+    name: Supply Chain Integrity
+      - item:
+        name: SPDX Safety Profile
+      - subcategory:
+        name: Content Safety
+        description: Examples are Watermarking, Signing
