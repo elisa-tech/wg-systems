@@ -1,3 +1,23 @@
-landscape:
-  - category:
-    name: Standards
+# yaml-language-server: $schema=https://raw.githubusercontent.com/cncf/landscape2/refs/heads/main/docs/config/schema/data.schema.json
+
+categories:
+	- name: Standards
+		subcategories:
+			- name: Functional safety
+				items:
+					- name: IEC 61508
+						description: >-
+							International standard series for the functional safety of
+							electrical, electronic and programmable electronic safety-related
+							systems.
+						homepage_url: https://webstore.iec.ch/en/publication/22273
+						summary_tags: Functional safety, E/E/PE systems, Safety lifecycle
+						logo: standards.svg
+					- name: ISO 26262
+						description: >-
+							Functional safety standard series for safety-related
+							electrical and electronic systems in series-production road
+							vehicles. The linked publication is Part 1: Vocabulary.
+						homepage_url: https://www.iso.org/standard/68383.html
+						summary_tags: Functional safety, Automotive, E/E systems
+						logo: standards.svg

@@ -1,101 +1,121 @@
-landscape:
-  - category:
-    name: Tools
-    subcategories:
-      - subcategory:
-        name: Compiler
-        items:
-          - item:
-            name: LLVM 
-            description: 
-            homepage_url: https://llvm.org/
-            repo_url: https://github.com/llvm
-            logo: LLVM.svg
-      - subcategory:
-        name: Requirements
-        items: []
-      - subcategory:
-        name: Static analysis
-        items: []
-      - subcategory:
-        name: Build tooling
-        items: []
-  - category:
-    name: Operating Systems
-      - subcategory:
-        name: Realtime
-        items:
-          - item: 
-            name: Zephyr
-          - item: 
-            name: ThreadX
-          - item: 
-            name: SeL4
-          - item: 
-            name: OpenBSW
-            repo_url: https://github.com/eclipse-openbsw
+# yaml-language-server: $schema=https://raw.githubusercontent.com/cncf/landscape2/refs/heads/main/docs/config/schema/data.schema.json
 
-      - subcategory:
-        name: Virtualization
+categories:
+  - name: Tools
+    subcategories:
+      - name: Compiler
         items:
-          - item:
-            name: Xen
-          - item:
-            name: L4Re
-      - subcategory:
-        name: Rich OS
+          - name: LLVM
+            description: A collection of modular and reusable compiler and toolchain technologies.
+            homepage_url: https://llvm.org/
+            repo_url: https://github.com/llvm/llvm-project
+            logo: LLVM.svg
+
+  - name: Operating Systems
+    subcategories:
+      - name: Real-time
         items:
-          - item: 
-            name: AutoSD
-            description: Community version of the commercial Red Hat In Vehicle OS targeted for ASIL-B products.
+          - name: Zephyr
+            description: Open-source real-time operating system for resource-constrained embedded devices, with broad hardware, connectivity, and security support.
+            homepage_url: https://www.zephyrproject.org/
+            repo_url: https://github.com/zephyrproject-rtos/zephyr
+            logo: placeholder.svg
+          - name: Eclipse ThreadX
+            description: Advanced real-time operating system designed for deeply embedded applications.
+            homepage_url: https://github.com/eclipse-threadx/threadx
+            repo_url: https://github.com/eclipse-threadx/threadx
+            logo: placeholder.svg
+          - name: seL4
+            description: Formally verified microkernel providing strong isolation for secure and high-assurance systems.
+            homepage_url: https://sel4.systems/
+            repo_url: https://github.com/seL4/seL4
+            logo: placeholder.svg
+          - name: OpenBSW
+            description: Open-source software development kit and reusable software stack for embedded automotive applications.
+            homepage_url: https://github.com/eclipse-openbsw
+            repo_url: https://github.com/eclipse-openbsw/openbsw
+            logo: placeholder.svg
+      - name: Virtualization
+        items:
+          - name: Xen
+            description: Open-source hypervisor for running isolated virtual machines on cloud, embedded, and security-sensitive platforms.
+            homepage_url: https://xenproject.org/
+            repo_url: https://github.com/xen-project/xen
+            logo: placeholder.svg
+          - name: L4Re
+            description: Open-source microkernel-based operating system framework and hypervisor designed for safety, security, and real-time workloads.
+            homepage_url: https://l4re.org/
+            logo: placeholder.svg
+      - name: Rich operating systems
+        items:
+          - name: AutoSD
+            description: Community version of the commercial Red Hat In-Vehicle OS targeted at ASIL-B products.
             homepage_url: https://sigs.centos.org/automotive/
             repo_url: https://gitlab.com/CentOS/automotive
-            tags: ISO 26262, Automotive
-          - item:
-            name: Halo OS 
-            tags: ISO 26262, Automotive
-            name: OxidOS Automotive
+            summary_tags: ISO 26262, Automotive
+            logo: placeholder.svg
+          - name: OxidOS Automotive
+            description: Rust-based secure operating system and development tools for safety-critical automotive microcontrollers.
             homepage_url: https://oxidos.io/
             repo_url: https://github.com/OxidosAutomotive
-            tags: ISO 26262, Automotive
-  - category:
-    name: Frameworks
-      - subcategory:
-        name: Middleware
+            summary_tags: ISO 26262, Automotive
+            logo: placeholder.svg
+
+  - name: Frameworks
+    subcategories:
+      - name: Middleware
         items:
-          - item:
-            name: Eclipse Safe Open Vehicle Core (S-CORE)
-          - item: 
-            name: Iceoryx
-            description: This is the original implementation of the inter-process communication middleware written in C++. For the Rust-based next-gen implementation, have a look at iceoryx2
+          - name: Eclipse Safe Open Vehicle Core (S-CORE)
+            description: Open-source software platform providing reusable building blocks for automotive systems.
+            homepage_url: https://eclipse-score.org/
+            repo_url: https://github.com/eclipse-score/score
+            logo: placeholder.svg
+          - name: Eclipse iceoryx
+            description: C++ inter-process communication middleware with zero-copy data exchange.
             homepage_url: https://iceoryx.io/
             repo_url: https://github.com/eclipse-iceoryx/iceoryx
-           tags: C++
-          - item: 
-            name: Iceoryx2
-            description: Efficient and ultra-low latency inter-process communication middleware. This library is designed to provide fast and reliable zero-copy and lock-free inter-process communication mechanisms.
+            summary_tags: C++
+            logo: placeholder.svg
+          - name: Eclipse iceoryx2
+            description: Rust inter-process communication middleware designed for fast, reliable, zero-copy communication.
             homepage_url: https://iceoryx.io/
             repo_url: https://github.com/eclipse-iceoryx/iceoryx2
-            tags: Rust
-          - item:
-            name: Apex.ai
+            summary_tags: Rust
+            logo: placeholder.svg
+          - name: Apex.AI
+            description: Software platforms, middleware, and tools for dependable embedded, automotive, and autonomous applications.
             homepage_url: https://www.apex.ai/
-            repo_url: https://github.com/orgs/ApexAI/repositories
-      - subcategory:
-        name: Artificial Intelligence (AI)      
-  - category:
-    name: System Engineering / Lifecycle Support
-    items:
-      - item: 
-        name: ELISA
-      - item: 
-        name: SOAFEE
-      - item:
-        name: Autoware
-  - category:
-    name: Supply Chain Integrity
-      - item:
-        name: SPDX Safety Profile
-      - subcategory:
-        name: Content Safety
-        description: Examples are Watermarking, Signing
+            repo_url: https://github.com/ApexAI
+            logo: placeholder.svg
+
+  - name: System Engineering and Lifecycle Support
+    subcategories:
+      - name: Projects
+        items:
+          - name: ELISA
+            description: Project developing elements, tools and processes to help companies build and certify Linux-based safety-critical systems.
+            homepage_url: https://elisa.tech/
+            repo_url: https://github.com/elisa-tech
+            logo: placeholder.svg
+          - name: SOAFEE
+            description: Industry-led initiative defining a cloud-native architecture and development approach for automotive embedded and edge systems.
+            homepage_url: https://www.soafee.io/
+            repo_url: https://github.com/soafee
+            logo: placeholder.svg
+          - name: Autoware
+            description: Open-source autonomous driving software built on ROS for deployment across a range of vehicles and applications.
+            homepage_url: https://autoware.org/
+            repo_url: https://github.com/autowarefoundation/autoware
+            logo: placeholder.svg
+
+  - name: Supply Chain Integrity
+    subcategories:
+      - name: Standards
+        items:
+          - name: SPDX Safety Profile
+            description: Safety-oriented use of SPDX metadata to support software component traceability in safety-related development.
+            homepage_url: https://spdx.org/
+            repo_url: https://github.com/spdx/spdx-spec
+            logo: placeholder.svg
+      - name: Content Safety
+        items: []
