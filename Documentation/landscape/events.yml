@@ -1,43 +1,43 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/cncf/landscape2/refs/heads/main/docs/config/schema/data.schema.json
 
 categories:
-	- name: Events
-		subcategories:
-			- name: Functional safety
-				items:
-					- name: TÜV SÜD safe.tech
-						description: >-
-							Conference on functional safety in rail, automation and automotive
-							engineering, bringing together experts for talks, parallel sessions and
-							workshops. Relevant topics include safety-critical software and systems.
-						homepage_url: https://www.tuvsud.com/de-de/store/akademie-konferenzen/automobil-bahn/3619501
-						summary_tags: Functional safety, Safety-critical software, Rail, Automotive, Automation
-						logo: conference.svg
-					- name: exida Automotive Symposium
-						description: >-
-							Symposium on automotive functional safety, cybersecurity, AI in
-							safety-critical applications, and the integration of free and open-source
-							software in automotive systems.
-						homepage_url: https://go.exida.com/automotive-symposium/
-						summary_tags: Functional safety, Safety-critical software, Cybersecurity, AI, FOSS, Automotive
-						logo: conference.svg
-			- name: Open source
-				items:
-						- name: Open Source Summit North America
-						description: >-
-							The Linux Foundation's vendor-neutral conference for open-source
-								developers, technologists, and community leaders to collaborate, share
-								knowledge, and explore open-source technologies and innovation.
-						homepage_url: https://events.linuxfoundation.org/open-source-summit-north-america/
-						summary_tags: Open source, Linux Foundation, Developers, Community
-						logo: conference.svg
-			- name: Embedded systems
-				items:
-					- name: embedded world
-						description: >-
-							Exhibition and conference connecting the international embedded
-							community and showcasing developments across hardware, systems, tools,
-							application software, safety, and security.
-						homepage_url: https://www.embedded-world.de/en
-						summary_tags: Embedded systems, Safety and security, Hardware, Software
-						logo: industry-fair.svg
+  - name: Events
+    subcategories:
+      - name: Functional safety
+        items:
+          - name: TÜV SÜD safe.tech
+            description: >-
+              Conference on functional safety in rail, automation and automotive
+              engineering, bringing together experts for talks, parallel sessions and
+              workshops. Relevant topics include safety-critical software and systems.
+            homepage_url: https://www.tuvsud.com/de-de/store/akademie-konferenzen/automobil-bahn/3619501
+            summary_tags: Functional safety, Safety-critical software, Rail, Automotive, Automation
+            logo: conference.svg
+          - name: exida Automotive Symposium
+            description: >-
+              Symposium on automotive functional safety, cybersecurity, AI in
+              safety-critical applications, and the integration of free and open-source
+              software in automotive systems.
+            homepage_url: https://go.exida.com/automotive-symposium/
+            summary_tags: Functional safety, Safety-critical software, Cybersecurity, AI, FOSS, Automotive
+            logo: conference.svg
+      - name: Open source
+        items:
+          - name: Open Source Summit North America
+            description: >-
+              The Linux Foundation's vendor-neutral conference for open-source
+              developers, technologists, and community leaders to collaborate, share
+              knowledge, and explore open-source technologies and innovation.
+            homepage_url: https://events.linuxfoundation.org/open-source-summit-north-america/
+            summary_tags: Open source, Linux Foundation, Developers, Community
+            logo: conference.svg
+      - name: Embedded systems
+        items:
+          - name: embedded world
+            description: >-
+              Exhibition and conference connecting the international embedded
+              community and showcasing developments across hardware, systems, tools,
+              application software, safety, and security.
+            homepage_url: https://www.embedded-world.de/en
+            summary_tags: Embedded systems, Safety and security, Hardware, Software
+            logo: industry-fair.svg

@@ -116,6 +116,6 @@ categories:
             description: Safety-oriented use of SPDX metadata to support software component traceability in safety-related development.
             homepage_url: https://spdx.org/
             repo_url: https://github.com/spdx/spdx-spec
-            logo: placeholder.svg
+            logo: SPDX_Safety.svg
       - name: Content Safety
         items: []
