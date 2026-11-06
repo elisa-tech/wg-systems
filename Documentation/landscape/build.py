@@ -1,3 +1,4 @@
+import argparse
 import os
 import shutil
 from pathlib import Path
@@ -7,6 +8,10 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent
 os.chdir(ROOT)
+
+parser = argparse.ArgumentParser(description="Build the ELISA Systems landscape.")
+parser.add_argument("--settings-file", default="settings.yml", help="Settings path relative to the landscape directory.")
+options = parser.parse_args()
 
 source_files = ("projects.yml", "standards.yml", "events.yml")
 categories = []
@@ -24,7 +29,7 @@ with data_file.open("w", encoding="utf-8") as output:
 arguments = [
     "build",
     "--data-file", "build/data.yml",
-    "--settings-file", "settings.yml",
+    "--settings-file", options.settings_file,
     "--guide-file", "guide.yml",
     "--logos-path", "hosted_logos",
     "--output-dir", "build/site",

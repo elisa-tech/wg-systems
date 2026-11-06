@@ -31,6 +31,29 @@ To use a specific Landscape2 image tag:
 LANDSCAPE2_IMAGE=ghcr.io/cncf/landscape2:<tag> python3 build.py
 ```
 
+## GitHub Pages
+
+The draft workflow `.github/workflows/landscape-pages.yml` is triggered manually.
+It generates `build/settings-pages.yml` from the local settings, overriding only
+`url` and `base_path` for the Pages URL with the `/landscape` suffix. The source
+`settings.yml` remains unchanged, so local previews continue to work at `/`.
+The workflow pins the Landscape2 container to an immutable image digest.
+
+In the repository settings, select **Pages > Source > GitHub Actions**. Once the
+workflow is merged into the default branch, run **Publish Landscape to GitHub
+Pages** from the Actions tab. The intended URL for this repository is
+<https://elisa-tech.github.io/wg-systems/landscape/>.
+
+The deployment publishes the entire Pages site, not just an incremental update
+to `/landscape/`. If other Pages content is added later, include it in the same
+artifact. A root `404.html` provides fallback routing for Landscape2 subpages.
+
+To build using alternate settings stored inside the landscape directory:
+
+```sh
+python3 build.py --settings-file build/settings-pages.yml
+```
+
 ## Data files
 
 - `projects.yml` contains the current ecosystem map.

@@ -1,0 +1,81 @@
+name: Publish Landscape to GitHub Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install build dependencies
+        run: python -m pip install -r Documentation/landscape/requirements.txt
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare hosting settings
+        env:
+          PAGES_URL: ${{ steps.pages.outputs.base_url }}
+          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          import yaml
+
+          root = Path("Documentation/landscape")
+          with (root / "settings.yml").open(encoding="utf-8") as source:
+              settings = yaml.safe_load(source)
+          settings["url"] = os.environ["PAGES_URL"].rstrip("/") + "/landscape"
+          settings["base_path"] = os.environ["PAGES_BASE_PATH"].rstrip("/") + "/landscape"
+          (root / "build").mkdir(exist_ok=True)
+          with (root / "build/settings-pages.yml").open("w", encoding="utf-8") as output:
+              yaml.safe_dump(settings, output, allow_unicode=True, sort_keys=False)
+          PY
+
+      - name: Build landscape
+        env:
+          LANDSCAPE2_IMAGE: ghcr.io/cncf/landscape2@sha256:d2cc67d7d25fcc74bf006ea17cd2e807cdc5698303c2a021dea51c8c6c5b5ce9
+        run: python Documentation/landscape/build.py --settings-file build/settings-pages.yml
+
+      - name: Prepare Pages artifact
+        run: |
+          mkdir -p _site/landscape
+          cp -a Documentation/landscape/build/site/. _site/landscape/
+          cp _site/landscape/index.html _site/404.html
+          touch _site/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}landscape/
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
