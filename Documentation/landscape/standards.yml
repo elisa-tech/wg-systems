@@ -11,7 +11,9 @@ categories:
               electrical, electronic and programmable electronic safety-related
               systems.
             homepage_url: https://webstore.iec.ch/en/publication/22273
-            summary_tags: Functional safety, E/E/PE systems, Safety lifecycle
+            extra:
+              summary_tags: Functional safety, E/E/PE systems, Safety lifecycle
+              specification: true
             logo: standards.svg
           - name: ISO 26262
             description: >-
@@ -19,5 +21,7 @@ categories:
               electrical and electronic systems in series-production road
               vehicles. The linked publication is Part 1: Vocabulary.
             homepage_url: https://www.iso.org/standard/68383.html
-            summary_tags: Functional safety, Automotive, E/E systems
+            extra:
+              summary_tags: Functional safety, Automotive, E/E systems
+              specification: true
             logo: standards.svg

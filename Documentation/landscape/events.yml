@@ -11,7 +11,8 @@ categories:
               engineering, bringing together experts for talks, parallel sessions and
               workshops. Relevant topics include safety-critical software and systems.
             homepage_url: https://www.tuvsud.com/de-de/store/akademie-konferenzen/automobil-bahn/3619501
-            summary_tags: Functional safety, Safety-critical software, Rail, Automotive, Automation
+            extra:
+              summary_tags: Functional safety, Safety-critical software, Rail, Automotive, Automation
             logo: conference.svg
           - name: exida Automotive Symposium
             description: >-
@@ -19,7 +20,8 @@ categories:
               safety-critical applications, and the integration of free and open-source
               software in automotive systems.
             homepage_url: https://go.exida.com/automotive-symposium/
-            summary_tags: Functional safety, Safety-critical software, Cybersecurity, AI, FOSS, Automotive
+            extra:
+              summary_tags: Functional safety, Safety-critical software, Cybersecurity, AI, FOSS, Automotive
             logo: conference.svg
       - name: Open source
         items:
@@ -29,7 +31,8 @@ categories:
               developers, technologists, and community leaders to collaborate, share
               knowledge, and explore open-source technologies and innovation.
             homepage_url: https://events.linuxfoundation.org/open-source-summit-north-america/
-            summary_tags: Open source, Linux Foundation, Developers, Community
+            extra:
+              summary_tags: Open source, Linux Foundation, Developers, Community
             logo: conference.svg
       - name: Embedded systems
         items:
@@ -39,5 +42,6 @@ categories:
               community and showcasing developments across hardware, systems, tools,
               application software, safety, and security.
             homepage_url: https://www.embedded-world.de/en
-            summary_tags: Embedded systems, Safety and security, Hardware, Software
+            extra:
+              summary_tags: Embedded systems, Safety and security, Hardware, Software
             logo: industry-fair.svg

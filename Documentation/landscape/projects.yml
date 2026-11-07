@@ -10,7 +10,13 @@ categories:
             homepage_url: https://llvm.org/
             repo_url: https://github.com/llvm/llvm-project
             logo: LLVM.svg
-
+          - name: Ferroscene
+            description: Open-source compiler infrastructure, quality-managed, TÜV SÜD–qualified, open source toolchain for use in embedded, safety- and mission-critical systems.
+            homepage_url: https://ferroscene.org/
+            repo_url: https://github.com/ferroscene/ferroscene
+            logo: placeholder.svg
+            extra:
+              summary_tags: Rust, Qualified, ISO 26262
   - name: Operating Systems
     subcategories:
       - name: Real-time
@@ -19,7 +25,7 @@ categories:
             description: Open-source real-time operating system for resource-constrained embedded devices, with broad hardware, connectivity, and security support.
             homepage_url: https://www.zephyrproject.org/
             repo_url: https://github.com/zephyrproject-rtos/zephyr
-            logo: placeholder.svg
+            logo: Zephyr_color-10.svg
           - name: Eclipse ThreadX
             description: Advanced real-time operating system designed for deeply embedded applications.
             homepage_url: https://github.com/eclipse-threadx/threadx
@@ -41,7 +47,7 @@ categories:
             description: Open-source hypervisor for running isolated virtual machines on cloud, embedded, and security-sensitive platforms.
             homepage_url: https://xenproject.org/
             repo_url: https://github.com/xen-project/xen
-            logo: placeholder.svg
+            logo: logo-xen-reverse.svg
           - name: L4Re
             description: Open-source microkernel-based operating system framework and hypervisor designed for safety, security, and real-time workloads.
             homepage_url: https://l4re.org/
@@ -52,13 +58,15 @@ categories:
             description: Community version of the commercial Red Hat In-Vehicle OS targeted at ASIL-B products.
             homepage_url: https://sigs.centos.org/automotive/
             repo_url: https://gitlab.com/CentOS/automotive
-            summary_tags: ISO 26262, Automotive
-            logo: placeholder.svg
+            extra:
+              summary_tags: ISO 26262, Automotive
+            logo: centos-autosd.svg
           - name: OxidOS Automotive
             description: Rust-based secure operating system and development tools for safety-critical automotive microcontrollers.
             homepage_url: https://oxidos.io/
             repo_url: https://github.com/OxidosAutomotive
-            summary_tags: ISO 26262, Automotive
+            extra:
+              summary_tags: ISO 26262, Automotive
             logo: placeholder.svg
 
   - name: Frameworks
@@ -74,21 +82,28 @@ categories:
             description: C++ inter-process communication middleware with zero-copy data exchange.
             homepage_url: https://iceoryx.io/
             repo_url: https://github.com/eclipse-iceoryx/iceoryx
-            summary_tags: C++
-            logo: placeholder.svg
+            extra:
+              summary_tags: C++
+            logo: iceoryx.svg
           - name: Eclipse iceoryx2
             description: Rust inter-process communication middleware designed for fast, reliable, zero-copy communication.
             homepage_url: https://iceoryx.io/
             repo_url: https://github.com/eclipse-iceoryx/iceoryx2
-            summary_tags: Rust
-            logo: placeholder.svg
+            extra:
+              summary_tags: Rust
+            logo: iceoryx.svg
           - name: Apex.AI
             description: Software platforms, middleware, and tools for dependable embedded, automotive, and autonomous applications.
             homepage_url: https://www.apex.ai/
             repo_url: https://github.com/ApexAI
             logo: placeholder.svg
+          - name: ROS2
+            description: Open-source robotics middleware for building robot applications, providing libraries and tools for hardware abstraction, device control, and communication between processes.
+            homepage_url: https://index.ros.org/doc/ros2/
+            repo_url: https://github.com/ros2/ros2
+            logo: placeholder.svg
 
-  - name: System Engineering and Lifecycle Support
+  - name: Organization (Lifecycle Support)
     subcategories:
       - name: Projects
         items:
@@ -96,7 +111,7 @@ categories:
             description: Project developing elements, tools and processes to help companies build and certify Linux-based safety-critical systems.
             homepage_url: https://elisa.tech/
             repo_url: https://github.com/elisa-tech
-            logo: placeholder.svg
+            logo: elisa-horizontal-color.svg
           - name: SOAFEE
             description: Industry-led initiative defining a cloud-native architecture and development approach for automotive embedded and edge systems.
             homepage_url: https://www.soafee.io/
@@ -117,5 +132,7 @@ categories:
             homepage_url: https://spdx.org/
             repo_url: https://github.com/spdx/spdx-spec
             logo: SPDX_Safety.svg
+            extra:
+              specification: true
       - name: Content Safety
         items: []
