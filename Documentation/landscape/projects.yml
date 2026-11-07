@@ -43,7 +43,7 @@ categories:
             logo: placeholder.svg
       - name: Virtualization
         items:
-          - name: Xen
+          - name: Xen Project
             description: Open-source hypervisor for running isolated virtual machines on cloud, embedded, and security-sensitive platforms.
             homepage_url: https://xenproject.org/
             repo_url: https://github.com/xen-project/xen
@@ -136,3 +136,38 @@ categories:
               specification: true
       - name: Content Safety
         items: []
+  - name: Tools
+    subcategories:
+      - name: Requirements Management
+        items:
+          - name: BASIL
+            description: A tool developed to manage software related work items, design their traceability towards specifications and source code and ensure completeness of analysis.
+            homepage_url: https://basil-the-fusa-spice.readthedocs.io/en/latest/
+            repo_url: https://github.com/elisa-tech/basil
+            logo: basil_black.svg
+            extra:
+              summary_tags: ISO26262
+          - name: StrictDoc
+            description: StrictDoc is open-source software for technical documentation and requirements management.
+            homepage_url: https://strictdoc-project.github.io/
+            repo_url: https://github.com/strictdoc-project/strictdoc
+            logo: strictdoc.svg
+            extra:
+              summary_integration: Used by Zephyr Project
+          - name: Sphinx-needs
+            description: Sphinx extension for managing requirements, specifications, and other project needs within Sphinx documentation.
+            homepage_url: https://sphinx-needs.readthedocs.io/en/latest/index.html
+            repo_url: https://github.com/useblocks/sphinx-needs
+            logo: placeholder.svg
+            extra:
+              summary_integration: Eclipse S-CORE
+          - name: OpenFastTrace
+            description: OpenFastTrace (short OFT) is a requirement management and tracing suite. Requirement tracing keeps track of whether you actually implemented everything you planned to in your specifications. It also identifies obsolete parts of your product and helps you to get rid of them.
+            homepage_url: https://github.com/itsallcode/openfasttrace/blob/main/doc/user_guide/user_guide.md
+            repo_url: https://github.com/itsallcode/openfasttrace
+            logo: placeholder.svg
+            license: GPL-3.0
+            extra:
+              summary_integration: Used by Xen Project
+
+            
