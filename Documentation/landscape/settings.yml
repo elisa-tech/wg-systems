@@ -5,6 +5,14 @@ url: http://localhost:8000
 description: Open-source technologies for safe and reliable systems.
 grid_items_size: medium
 view_mode: grid
+colors:
+  color1: "rgba(0, 117, 23, 1)"
+  color2: "rgba(119, 192, 70, 1)"
+  color3: "rgba(0, 142, 97, 1)"
+  color4: "rgba(0, 112, 114, 0.9)"
+  color5: "rgba(0, 117, 23, 0.96)"
+  color6: "rgba(0, 112, 114, 0.96)"
+  color7: "rgba(51, 51, 51, 0.45)"
 header:
   links:
     github: https://github.com/elisa-tech/wg-systems

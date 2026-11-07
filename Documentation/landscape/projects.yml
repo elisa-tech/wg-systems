@@ -47,7 +47,7 @@ categories:
             description: Open-source hypervisor for running isolated virtual machines on cloud, embedded, and security-sensitive platforms.
             homepage_url: https://xenproject.org/
             repo_url: https://github.com/xen-project/xen
-            logo: logo-xen-reverse.svg
+            logo: logo-xen.svg
           - name: L4Re
             description: Open-source microkernel-based operating system framework and hypervisor designed for safety, security, and real-time workloads.
             homepage_url: https://l4re.org/
