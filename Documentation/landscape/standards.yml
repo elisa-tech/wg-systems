@@ -3,7 +3,7 @@
 categories:
   - name: Standards
     subcategories:
-      - name: Functional safety
+      - name: Safety Integrity
         items:
           - name: IEC 61508
             description: >-
@@ -12,7 +12,7 @@ categories:
               systems.
             homepage_url: https://webstore.iec.ch/en/publication/22273
             extra:
-              summary_tags: Functional safety, E/E/PE systems, Safety lifecycle
+              summary_tags: Industrial, Safety Integrity, Safety lifecycle
               specification: true
             logo: standards.svg
           - name: ISO 26262
@@ -22,6 +22,40 @@ categories:
               vehicles. The linked publication is Part 1: Vocabulary.
             homepage_url: https://www.iso.org/standard/68383.html
             extra:
-              summary_tags: Functional safety, Automotive, E/E systems
+              summary_tags: Automotive, Safety Integrity, E/E systems
+              specification: true
+            logo: standards.svg
+      - name: Quality Management
+        items:
+          - name: ISO 9001
+            description: >-
+              International standard for quality management systems, providing a framework for consistent quality and continuous improvement.
+            homepage_url: https://www.iso.org/iso-9001-quality-management.html
+            extra:
+              summary_tags: Quality management, Continuous improvement
+              specification: true
+            logo: standards.svg
+          - name: ISO 13485
+            description: >-
+              International standard for quality management systems specific to the medical devices industry, ensuring consistent design, development, production, and delivery of medical devices.
+            homepage_url: https://www.iso.org/standard/59752.html
+            extra:
+              summary_tags: Medical devices, Quality management, Regulatory compliance
+              specification: true
+            logo: standards.svg
+          - name: ASPICE 4.0
+            description: >-
+              Automotive SPICE (Software Process Improvement and Capability Determination) is a framework for assessing and improving software development processes in the automotive industry.
+            homepage_url: https://www.automotivespice.com/
+            extra:
+              summary_tags: Automotive, Software development, Process improvement
+              specification: true
+            logo: standards.svg
+          - name: CMMI
+            description: >-
+              Capability Maturity Model Integration (CMMI) is a process level improvement training and appraisal program for software and systems development.
+            homepage_url: https://cmmiinstitute.com/cmmi
+            extra:
+              summary_tags: Process improvement, Software development, Systems development
               specification: true
             logo: standards.svg

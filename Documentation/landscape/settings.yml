@@ -5,6 +5,25 @@ url: http://localhost:8000
 description: Open-source technologies for safe and reliable systems.
 grid_items_size: medium
 view_mode: grid
+groups:
+  - name: Projects
+    alias: projects
+    categories:
+      - Tools
+      - Operating Systems
+      - Frameworks
+      - Organization (Lifecycle Support)
+  - name: Standards
+    alias: standards
+    categories:
+      - Standards
+      - Supply Chain Integrity
+  - name: Events
+    alias: events
+    categories:
+      - Functional Safety Events
+      - Open Source Events
+      - Fairs
 colors:
   color1: "rgba(0, 117, 23, 1)"
   color2: "rgba(119, 192, 70, 1)"

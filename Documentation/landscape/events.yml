@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/cncf/landscape2/refs/heads/main/docs/config/schema/data.schema.json
 
 categories:
-  - name: Events
+  - name: Functional Safety Events
     subcategories:
-      - name: Functional safety
+      - name: Conferences
         items:
           - name: TÜV SÜD safe.tech
             description: >-
@@ -23,7 +23,9 @@ categories:
             extra:
               summary_tags: Functional safety, Safety-critical software, Cybersecurity, AI, FOSS, Automotive
             logo: conference.svg
-      - name: Open source
+  - name: Open Source Events
+    subcategories:
+      - name: Conferences
         items:
           - name: Open Source Summit North America
             description: >-
@@ -34,7 +36,9 @@ categories:
             extra:
               summary_tags: Open source, Linux Foundation, Developers, Community
             logo: conference.svg
-      - name: Embedded systems
+  - name: Fairs
+    subcategories:
+      - name: Exhibitions
         items:
           - name: embedded world
             description: >-

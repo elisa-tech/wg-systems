@@ -135,7 +135,17 @@ categories:
             extra:
               specification: true
       - name: Content Safety
-        items: []
+        items:
+          - name: Trustable Software Framework
+            description: The Eclipse Trustable Software Framework (TSF) provides an extensible model for collecting, organising and evaluating evidence for releases of a software
+                         project/product ("XYZ"), to allow a consumer to consider to what extent they should trust the software. The TSF broadly identifies six key topics
+                         ("Trustable Tenets"), made up of more detailed factors ("Trustable Assertions").
+            homepage_url: https://pages.eclipse.dev/eclipse/tsf/tsf/
+            repo_url: https://gitlab.eclipse.org/eclipse/tsf/tsf
+            logo: placeholder.svg
+            extra:
+              summary_tags: Supply Chain, Software Integrity, Eclipse Foundation
+              specification: true
   - name: Tools
     subcategories:
       - name: Requirements Management
