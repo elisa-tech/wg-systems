@@ -35,9 +35,10 @@ colors:
 header:
   links:
     github: https://github.com/elisa-tech/wg-systems
+  logo: hosted_logos/elisa-landscape-header.svg
   motd: Open-source building blocks for safe and reliable systems
 footer:
   links:
     homepage: https://elisa.tech/
-    github: https://github.com/elisa-tech/wg-systems
+    github: https://github.com/elisa-tech/wg-systems/landscape
   text: ELISA Systems Working Group
