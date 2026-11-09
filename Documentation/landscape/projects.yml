@@ -134,7 +134,7 @@ categories:
             logo: SPDX_Safety.svg
             extra:
               specification: true
-      - name: Content Safety
+      - name: Continuous Assurance
         items:
           - name: Trustable Software Framework
             description: The Eclipse Trustable Software Framework (TSF) provides an extensible model for collecting, organising and evaluating evidence for releases of a software
@@ -142,7 +142,7 @@ categories:
                          ("Trustable Tenets"), made up of more detailed factors ("Trustable Assertions").
             homepage_url: https://pages.eclipse.dev/eclipse/tsf/tsf/
             repo_url: https://gitlab.eclipse.org/eclipse/tsf/tsf
-            logo: placeholder.svg
+            logo: trustable-logo.svg
             extra:
               summary_tags: Supply Chain, Software Integrity, Eclipse Foundation
               specification: true

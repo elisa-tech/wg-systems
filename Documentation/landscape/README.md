@@ -9,8 +9,8 @@ Otherwise, it falls back to the official Docker image.
 
 Prerequisites: Python 3, PyYAML, and either the Landscape2 CLI or Docker with a
 running daemon. With Docker, network access is needed the first time to download
-the Landscape2 image. On Linux Mint, install PyYAML with `sudo apt install
-python3-yaml`. From the repository root, run:
+the Landscape2 image. On Linux distros with apt you can, install PyYAML with `sudo apt install
+python3-yaml` or via pip `python3 -m pip install PyYAML`. From the repository root, run:
 
 ```sh
 cd Documentation/landscape
