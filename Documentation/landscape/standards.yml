@@ -14,7 +14,7 @@ categories:
             extra:
               summary_tags: Industrial, Safety Integrity, Safety lifecycle
               specification: true
-            logo: standards.svg
+            logo: standards-iec-61508.svg
           - name: ISO 26262
             description: >-
               Functional safety standard series for safety-related
@@ -24,7 +24,7 @@ categories:
             extra:
               summary_tags: Automotive, Safety Integrity, E/E systems
               specification: true
-            logo: standards.svg
+            logo: standards-iso-26262.svg
       - name: Quality Management
         items:
           - name: ISO 9001
@@ -34,7 +34,7 @@ categories:
             extra:
               summary_tags: Quality management, Continuous improvement
               specification: true
-            logo: standards.svg
+            logo: standards-iso-9001.svg
           - name: ISO 13485
             description: >-
               International standard for quality management systems specific to the medical devices industry, ensuring consistent design, development, production, and delivery of medical devices.
@@ -42,7 +42,7 @@ categories:
             extra:
               summary_tags: Medical devices, Quality management, Regulatory compliance
               specification: true
-            logo: standards.svg
+            logo: standards-iso-13485.svg
           - name: ASPICE 4.0
             description: >-
               Automotive SPICE (Software Process Improvement and Capability Determination) is a framework for assessing and improving software development processes in the automotive industry.
@@ -71,7 +71,7 @@ categories:
             extra:
               summary_tags: Supply chain, Integrity, Traceability
               specification: true
-            logo: SPDX_logo_color.svg
+            logo: standards-iso-5962.svg
           - name: SPDX Safety Profile
             description: Safety-oriented use of SPDX metadata to support software component traceability in safety-related development.
             homepage_url: https://spdx.org/
