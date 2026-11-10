@@ -36,6 +36,31 @@ categories:
             extra:
               summary_tags: Open source, Linux Foundation, Developers, Community
             logo: open-source-summit-north-america.svg
+          - name: Open Source Summit Europe
+            description: >-
+              The Linux Foundation's vendor-neutral conference for open-source
+              developers, technologists, and community leaders to collaborate, share
+              knowledge, and explore open-source technologies and innovation.
+            homepage_url: https://events.linuxfoundation.org/open-source-summit-europe/
+            extra:
+              summary_tags: Open source, Linux Foundation, Developers, Community
+            logo: open-source-summit-europe.svg
+          - name: Open Source Summit Japan
+            description: >-
+              The Linux Foundation's vendor-neutral conference for open-source
+              developers, technologists, and community leaders to collaborate, share
+              knowledge, and explore open-source technologies and innovation.
+            homepage_url: https://events.linuxfoundation.org/open-source-summit-japan/
+            extra:
+              summary_tags: Open source, Linux Foundation, Developers, Community
+            logo: open-source-summit-japan.svg
+          - name: FOSDEM
+            description: >-
+              FOSDEM is a free event for software developers to meet, share ideas, and collaborate on open-source projects.
+            homepage_url: https://fosdem.org/
+            extra:
+              summary_tags: Open source, Developers, Community
+            logo: conference.svg
   - name: Fairs
     subcategories:
       - name: Exhibitions
