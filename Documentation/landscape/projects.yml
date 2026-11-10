@@ -77,7 +77,7 @@ categories:
             description: Open-source software platform providing reusable building blocks for automotive systems.
             homepage_url: https://eclipse-score.org/
             repo_url: https://github.com/eclipse-score/score
-            logo: placeholder.svg
+            logo: project-s-core.svg
           - name: Eclipse iceoryx
             description: C++ inter-process communication middleware with zero-copy data exchange.
             homepage_url: https://iceoryx.io/
@@ -96,12 +96,12 @@ categories:
             description: Software platforms, middleware, and tools for dependable embedded, automotive, and autonomous applications.
             homepage_url: https://www.apex.ai/
             repo_url: https://github.com/ApexAI
-            logo: placeholder.svg
+            logo: project-apex-ai.svg
           - name: ROS2
             description: Open-source robotics middleware for building robot applications, providing libraries and tools for hardware abstraction, device control, and communication between processes.
             homepage_url: https://index.ros.org/doc/ros2/
             repo_url: https://github.com/ros2/ros2
-            logo: placeholder.svg
+            logo: project-ros2.svg
 
   - name: Organization (Lifecycle Support)
     subcategories:
@@ -116,12 +116,12 @@ categories:
             description: Industry-led initiative defining a cloud-native architecture and development approach for automotive embedded and edge systems.
             homepage_url: https://www.soafee.io/
             repo_url: https://github.com/soafee
-            logo: placeholder.svg
+            logo: project-soafee.svg
           - name: Autoware
             description: Open-source autonomous driving software built on ROS for deployment across a range of vehicles and applications.
             homepage_url: https://autoware.org/
             repo_url: https://github.com/autowarefoundation/autoware
-            logo: placeholder.svg
+            logo: project-autoware.svg
 
   - name: Tools
     subcategories:

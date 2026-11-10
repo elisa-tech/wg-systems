@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 96 96">
+  <title>Open Source Summit North America</title>
+  <rect width="96" height="96" rx="8" fill="#173f43"/>
+  <svg x="20" y="4" width="56" height="56" viewBox="0 145 184 190">
+    <g fill="#f3f6f2" transform="translate(-27.91 -235.43)">
+      <path d="M119.79,478.14a91.88,91.88,0,1,1,91.88-91.87H179a59.23,59.23,0,1,0-59.23,59.23Z"/>
+      <path d="M119.79 571.28A92 92 0 0 1 27.91 479.4H60.56a59.23,59.23 0 1 0 59.23-59.23V387.52a91.88 91.88 0 0 1 0 183.76z"/>
+    </g>
+  </svg>
+  <text x="48" y="81" text-anchor="middle" fill="#f3f6f2" font-family="Arial, sans-serif" font-size="8" font-weight="700">NORTH AMERICA</text>
+</svg>

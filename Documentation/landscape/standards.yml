@@ -50,7 +50,7 @@ categories:
             extra:
               summary_tags: Automotive, Software development, Process improvement
               specification: true
-            logo: standards.svg
+            logo: standards-aspice-4-0.svg
           - name: CMMI
             description: >-
               Capability Maturity Model Integration (CMMI) is a process level improvement training and appraisal program for software and systems development.
@@ -58,7 +58,7 @@ categories:
             extra:
               summary_tags: Process improvement, Software development, Systems development
               specification: true
-            logo: standards.svg
+            logo: standards-cmmi.svg
 
   - name: Supply Chain Integrity
     subcategories:

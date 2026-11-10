@@ -35,7 +35,7 @@ categories:
             homepage_url: https://events.linuxfoundation.org/open-source-summit-north-america/
             extra:
               summary_tags: Open source, Linux Foundation, Developers, Community
-            logo: conference.svg
+            logo: open-source-summit-north-america.svg
   - name: Fairs
     subcategories:
       - name: Exhibitions
