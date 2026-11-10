@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/cncf/landscape2/refs/heads/main/docs/config/schema/settings.schema.json
+
+foundation: ELISA Systems
+url: http://localhost:8000
+description: Open-source technologies for safe and reliable systems.
+grid_items_size: medium
+view_mode: grid
+groups:
+  - name: Projects
+    alias: projects
+    categories:
+      - Frameworks
+      - Operating Systems
+      - Tools
+      - Organization (Lifecycle Support)
+  - name: Standards
+    alias: standards
+    categories:
+      - Standards
+      - Supply Chain Integrity
+  - name: Events
+    alias: events
+    categories:
+      - Functional Safety Events
+      - Open Source Events
+      - Fairs
+colors:
+  color1: "rgba(0, 117, 23, 1)"
+  color2: "rgba(119, 192, 70, 1)"
+  color3: "rgba(0, 142, 97, 1)"
+  color4: "rgba(0, 112, 114, 0.9)"
+  color5: "rgba(0, 117, 23, 0.96)"
+  color6: "rgba(0, 112, 114, 0.96)"
+  color7: "rgba(51, 51, 51, 0.45)"
+header:
+  links:
+    github: https://github.com/elisa-tech/wg-systems
+  logo: hosted_logos/elisa-landscape-header.svg
+  motd: Open-source building blocks for safe and reliable systems
+footer:
+  links:
+    homepage: https://elisa.tech/
+    github: https://github.com/elisa-tech/wg-systems/landscape
+  text: ELISA Systems Working Group

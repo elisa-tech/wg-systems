@@ -1,0 +1,160 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/cncf/landscape2/refs/heads/main/docs/config/schema/data.schema.json
+
+categories:
+  - name: Tools
+    subcategories:
+      - name: Compiler
+        items:
+          - name: LLVM
+            description: A collection of modular and reusable compiler and toolchain technologies.
+            homepage_url: https://llvm.org/
+            repo_url: https://github.com/llvm/llvm-project
+            logo: LLVM.svg
+          - name: Ferroscene
+            description: Open-source compiler infrastructure, quality-managed, TÜV SÜD–qualified, open source toolchain for use in embedded, safety- and mission-critical systems.
+            homepage_url: https://ferroscene.org/
+            repo_url: https://github.com/ferroscene/ferroscene
+            logo: placeholder.svg
+            extra:
+              summary_tags: Rust, Qualified, ISO 26262
+  - name: Operating Systems
+    subcategories:
+      - name: Real-time
+        items:
+          - name: Zephyr
+            description: Open-source real-time operating system for resource-constrained embedded devices, with broad hardware, connectivity, and security support.
+            homepage_url: https://www.zephyrproject.org/
+            repo_url: https://github.com/zephyrproject-rtos/zephyr
+            logo: Zephyr_color-10.svg
+          - name: Eclipse ThreadX
+            description: Advanced real-time operating system designed for deeply embedded applications.
+            homepage_url: https://github.com/eclipse-threadx/threadx
+            repo_url: https://github.com/eclipse-threadx/threadx
+            logo: placeholder.svg
+          - name: seL4
+            description: Formally verified microkernel providing strong isolation for secure and high-assurance systems.
+            homepage_url: https://sel4.systems/
+            repo_url: https://github.com/seL4/seL4
+            logo: placeholder.svg
+          - name: OpenBSW
+            description: Open-source software development kit and reusable software stack for embedded automotive applications.
+            homepage_url: https://github.com/eclipse-openbsw
+            repo_url: https://github.com/eclipse-openbsw/openbsw
+            logo: placeholder.svg
+      - name: Virtualization
+        items:
+          - name: Xen Project
+            description: Open-source hypervisor for running isolated virtual machines on cloud, embedded, and security-sensitive platforms.
+            homepage_url: https://xenproject.org/
+            repo_url: https://github.com/xen-project/xen
+            logo: logo-xen.svg
+          - name: L4Re
+            description: Open-source microkernel-based operating system framework and hypervisor designed for safety, security, and real-time workloads.
+            homepage_url: https://l4re.org/
+            logo: placeholder.svg
+      - name: Rich operating systems
+        items:
+          - name: AutoSD
+            description: Community version of the commercial Red Hat In-Vehicle OS targeted at ASIL-B products.
+            homepage_url: https://sigs.centos.org/automotive/
+            repo_url: https://gitlab.com/CentOS/automotive
+            extra:
+              summary_tags: ISO 26262, Automotive
+            logo: centos-autosd.svg
+          - name: OxidOS Automotive
+            description: Rust-based secure operating system and development tools for safety-critical automotive microcontrollers.
+            homepage_url: https://oxidos.io/
+            repo_url: https://github.com/OxidosAutomotive
+            extra:
+              summary_tags: ISO 26262, Automotive
+            logo: placeholder.svg
+
+  - name: Frameworks
+    subcategories:
+      - name: Middleware
+        items:
+          - name: Eclipse Safe Open Vehicle Core (S-CORE)
+            description: Open-source software platform providing reusable building blocks for automotive systems.
+            homepage_url: https://eclipse-score.org/
+            repo_url: https://github.com/eclipse-score/score
+            logo: project-s-core.svg
+          - name: Eclipse iceoryx
+            description: C++ inter-process communication middleware with zero-copy data exchange.
+            homepage_url: https://iceoryx.io/
+            repo_url: https://github.com/eclipse-iceoryx/iceoryx
+            extra:
+              summary_tags: C++
+            logo: iceoryx.svg
+          - name: Eclipse iceoryx2
+            description: Rust inter-process communication middleware designed for fast, reliable, zero-copy communication.
+            homepage_url: https://iceoryx.io/
+            repo_url: https://github.com/eclipse-iceoryx/iceoryx2
+            extra:
+              summary_tags: Rust
+            logo: iceoryx.svg
+          - name: Apex.AI
+            description: Software platforms, middleware, and tools for dependable embedded, automotive, and autonomous applications.
+            homepage_url: https://www.apex.ai/
+            repo_url: https://github.com/ApexAI
+            logo: project-apex-ai.svg
+          - name: ROS2
+            description: Open-source robotics middleware for building robot applications, providing libraries and tools for hardware abstraction, device control, and communication between processes.
+            homepage_url: https://index.ros.org/doc/ros2/
+            repo_url: https://github.com/ros2/ros2
+            logo: project-ros2.svg
+
+  - name: Organization (Lifecycle Support)
+    subcategories:
+      - name: Projects
+        items:
+          - name: ELISA
+            description: Project developing elements, tools and processes to help companies build and certify Linux-based safety-critical systems.
+            homepage_url: https://elisa.tech/
+            repo_url: https://github.com/elisa-tech
+            logo: elisa-horizontal-color.svg
+          - name: SOAFEE
+            description: Industry-led initiative defining a cloud-native architecture and development approach for automotive embedded and edge systems.
+            homepage_url: https://www.soafee.io/
+            repo_url: https://github.com/soafee
+            logo: project-soafee.svg
+          - name: Autoware
+            description: Open-source autonomous driving software built on ROS for deployment across a range of vehicles and applications.
+            homepage_url: https://autoware.org/
+            repo_url: https://github.com/autowarefoundation/autoware
+            logo: project-autoware.svg
+
+  - name: Tools
+    subcategories:
+      - name: Requirements Management
+        items:
+          - name: BASIL
+            description: A tool developed to manage software related work items, design their traceability towards specifications and source code and ensure completeness of analysis.
+            homepage_url: https://basil-the-fusa-spice.readthedocs.io/en/latest/
+            repo_url: https://github.com/elisa-tech/basil
+            logo: basil_black.svg
+            extra:
+              summary_tags: ISO26262
+          - name: StrictDoc
+            description: StrictDoc is open-source software for technical documentation and requirements management.
+            homepage_url: https://strictdoc-project.github.io/
+            repo_url: https://github.com/strictdoc-project/strictdoc
+            logo: strictdoc.svg
+            extra:
+              summary_integration: Used by Zephyr Project
+          - name: Sphinx-needs
+            description: Sphinx extension for managing requirements, specifications, and other project needs within Sphinx documentation.
+            homepage_url: https://sphinx-needs.readthedocs.io/en/latest/index.html
+            repo_url: https://github.com/useblocks/sphinx-needs
+            logo: placeholder.svg
+            extra:
+              summary_integration: Eclipse S-CORE
+          - name: OpenFastTrace
+            description: OpenFastTrace (short OFT) is a requirement management and tracing suite. Requirement tracing keeps track of whether you actually implemented everything you planned to in your specifications. It also identifies obsolete parts of your product and helps you to get rid of them.
+            homepage_url: https://github.com/itsallcode/openfasttrace/blob/main/doc/user_guide/user_guide.md
+            repo_url: https://github.com/itsallcode/openfasttrace
+            logo: placeholder.svg
+            license: GPL-3.0
+            extra:
+              summary_integration: Used by Xen Project
+
+            

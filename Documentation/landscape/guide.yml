@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/cncf/landscape2/refs/heads/main/docs/config/schema/guide.schema.json
+
+categories:
+  - category: Introduction
+    keywords: []
+    content: |
+      This landscape maps open-source projects, standards, and events relevant to
+      building safe, reliable, and maintainable systems. It is maintained by the
+      ELISA Systems Working Group and is intended as a navigable ecosystem map,
+      not as an endorsement or certification of the listed projects.

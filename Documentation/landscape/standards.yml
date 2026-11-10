@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/cncf/landscape2/refs/heads/main/docs/config/schema/data.schema.json
+
+categories:
+  - name: Standards
+    subcategories:
+      - name: Safety Integrity
+        items:
+          - name: IEC 61508
+            description: >-
+              International standard series for the functional safety of
+              electrical, electronic and programmable electronic safety-related
+              systems.
+            homepage_url: https://webstore.iec.ch/en/publication/22273
+            extra:
+              summary_tags: Industrial, Safety Integrity, Safety lifecycle
+              specification: true
+            logo: standards-iec-61508.svg
+          - name: ISO 26262
+            description: >-
+              Functional safety standard series for safety-related
+              electrical and electronic systems in series-production road
+              vehicles. The linked publication is Part 1: Vocabulary.
+            homepage_url: https://www.iso.org/standard/68383.html
+            extra:
+              summary_tags: Automotive, Safety Integrity, E/E systems
+              specification: true
+            logo: standards-iso-26262.svg
+      - name: Quality Management
+        items:
+          - name: ISO 9001
+            description: >-
+              International standard for quality management systems, providing a framework for consistent quality and continuous improvement.
+            homepage_url: https://www.iso.org/iso-9001-quality-management.html
+            extra:
+              summary_tags: Quality management, Continuous improvement
+              specification: true
+            logo: standards-iso-9001.svg
+          - name: ISO 13485
+            description: >-
+              International standard for quality management systems specific to the medical devices industry, ensuring consistent design, development, production, and delivery of medical devices.
+            homepage_url: https://www.iso.org/standard/59752.html
+            extra:
+              summary_tags: Medical devices, Quality management, Regulatory compliance
+              specification: true
+            logo: standards-iso-13485.svg
+          - name: ASPICE 4.0
+            description: >-
+              Automotive SPICE (Software Process Improvement and Capability Determination) is a framework for assessing and improving software development processes in the automotive industry.
+            homepage_url: https://www.automotivespice.com/
+            extra:
+              summary_tags: Automotive, Software development, Process improvement
+              specification: true
+            logo: standards-aspice-4-0.svg
+          - name: CMMI
+            description: >-
+              Capability Maturity Model Integration (CMMI) is a process level improvement training and appraisal program for software and systems development.
+            homepage_url: https://cmmiinstitute.com/cmmi
+            extra:
+              summary_tags: Process improvement, Software development, Systems development
+              specification: true
+            logo: standards-cmmi.svg
+
+  - name: Supply Chain Integrity
+    subcategories:
+      - name: Standards
+        items:
+          - name: ISO 5962
+            description: >-
+              International standard for supply chain integrity, providing guidelines for ensuring the authenticity and traceability of products throughout the supply chain.
+            homepage_url: https://www.iso.org/standard/93810.html
+            extra:
+              summary_tags: Supply chain, Integrity, Traceability
+              specification: true
+            logo: standards-iso-5962.svg
+          - name: SPDX Safety Profile
+            description: Safety-oriented use of SPDX metadata to support software component traceability in safety-related development.
+            homepage_url: https://spdx.org/
+            repo_url: https://github.com/spdx/spdx-spec
+            extra:
+              specification: true
+            logo: SPDX_Safety.svg
+      - name: Continuous Assurance
+        items:
+          - name: Trustable Software Framework
+            description: The Eclipse Trustable Software Framework (TSF) provides an extensible model for collecting, organising and evaluating evidence for releases of a software
+                         project/product ("XYZ"), to allow a consumer to consider to what extent they should trust the software. The TSF broadly identifies six key topics
+                         ("Trustable Tenets"), made up of more detailed factors ("Trustable Assertions").
+            homepage_url: https://pages.eclipse.dev/eclipse/tsf/tsf/
+            repo_url: https://gitlab.eclipse.org/eclipse/tsf/tsf
+            logo: trustable-logo.svg
+            extra:
+              summary_tags: Supply Chain, Software Integrity, Eclipse Foundation
+              specification: true
+            
