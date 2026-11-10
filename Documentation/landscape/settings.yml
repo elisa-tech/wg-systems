@@ -9,9 +9,9 @@ groups:
   - name: Projects
     alias: projects
     categories:
-      - Tools
-      - Operating Systems
       - Frameworks
+      - Operating Systems
+      - Tools
       - Organization (Lifecycle Support)
   - name: Standards
     alias: standards

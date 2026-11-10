@@ -123,29 +123,6 @@ categories:
             repo_url: https://github.com/autowarefoundation/autoware
             logo: placeholder.svg
 
-  - name: Supply Chain Integrity
-    subcategories:
-      - name: Standards
-        items:
-          - name: SPDX Safety Profile
-            description: Safety-oriented use of SPDX metadata to support software component traceability in safety-related development.
-            homepage_url: https://spdx.org/
-            repo_url: https://github.com/spdx/spdx-spec
-            logo: SPDX_Safety.svg
-            extra:
-              specification: true
-      - name: Continuous Assurance
-        items:
-          - name: Trustable Software Framework
-            description: The Eclipse Trustable Software Framework (TSF) provides an extensible model for collecting, organising and evaluating evidence for releases of a software
-                         project/product ("XYZ"), to allow a consumer to consider to what extent they should trust the software. The TSF broadly identifies six key topics
-                         ("Trustable Tenets"), made up of more detailed factors ("Trustable Assertions").
-            homepage_url: https://pages.eclipse.dev/eclipse/tsf/tsf/
-            repo_url: https://gitlab.eclipse.org/eclipse/tsf/tsf
-            logo: trustable-logo.svg
-            extra:
-              summary_tags: Supply Chain, Software Integrity, Eclipse Foundation
-              specification: true
   - name: Tools
     subcategories:
       - name: Requirements Management
