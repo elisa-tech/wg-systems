@@ -10,23 +10,28 @@ categories:
             homepage_url: https://llvm.org/
             repo_url: https://github.com/llvm/llvm-project
             logo: LLVM.svg
-          - name: Ferroscene
+          - name: Ferrocene
+            project: commercial-offer
             description: Open-source compiler infrastructure, quality-managed, TÜV SÜD–qualified, open source toolchain for use in embedded, safety- and mission-critical systems.
-            homepage_url: https://ferroscene.org/
-            repo_url: https://github.com/ferroscene/ferroscene
+            homepage_url: https://ferrocene.org/
+            repo_url: https://github.com/ferrocene/ferrocene
             logo: placeholder.svg
             extra:
-              summary_tags: Rust, Qualified, ISO 26262
+              summary_tags: Rust, Qualified, ISO 26262, Commercial Support
+      - name: Supply Chain
+        items: []
   - name: Operating Systems
     subcategories:
       - name: Real-time
         items:
           - name: Zephyr
+            project: under-certification
             description: Open-source real-time operating system for resource-constrained embedded devices, with broad hardware, connectivity, and security support.
             homepage_url: https://www.zephyrproject.org/
             repo_url: https://github.com/zephyrproject-rtos/zephyr
             logo: Zephyr_color-10.svg
           - name: Eclipse ThreadX
+            project: safety-certified
             description: Advanced real-time operating system designed for deeply embedded applications.
             homepage_url: https://github.com/eclipse-threadx/threadx
             repo_url: https://github.com/eclipse-threadx/threadx
@@ -44,17 +49,20 @@ categories:
       - name: Virtualization
         items:
           - name: Xen Project
+            project: under-certification
             description: Open-source hypervisor for running isolated virtual machines on cloud, embedded, and security-sensitive platforms.
             homepage_url: https://xenproject.org/
             repo_url: https://github.com/xen-project/xen
             logo: logo-xen.svg
           - name: L4Re
+            project: commercial-offer
             description: Open-source microkernel-based operating system framework and hypervisor designed for safety, security, and real-time workloads.
             homepage_url: https://l4re.org/
             logo: placeholder.svg
       - name: Rich operating systems
         items:
           - name: AutoSD
+            project: commercial-offer
             description: Community version of the commercial Red Hat In-Vehicle OS targeted at ASIL-B products.
             homepage_url: https://sigs.centos.org/automotive/
             repo_url: https://gitlab.com/CentOS/automotive
@@ -86,11 +94,12 @@ categories:
               summary_tags: C++
             logo: iceoryx.svg
           - name: Eclipse iceoryx2
+            project: commercial-offer
             description: Rust inter-process communication middleware designed for fast, reliable, zero-copy communication.
             homepage_url: https://iceoryx.io/
             repo_url: https://github.com/eclipse-iceoryx/iceoryx2
             extra:
-              summary_tags: Rust
+              summary_tags: Rust, Commercial Support
             logo: iceoryx.svg
           - name: Apex.AI
             description: Software platforms, middleware, and tools for dependable embedded, automotive, and autonomous applications.
@@ -123,6 +132,31 @@ categories:
             repo_url: https://github.com/autowarefoundation/autoware
             logo: project-autoware.svg
 
+  - name: Supply Chain Integrity
+    subcategories:
+      - name: Standards
+        items:
+          - name: SPDX Safety Profile
+            description: Safety-oriented use of SPDX metadata to support software component traceability in safety-related development.
+            homepage_url: https://spdx.org/
+            repo_url: https://github.com/spdx/spdx-spec
+            logo: SPDX_Safety.svg
+            second_path:
+              - Tools / Supply Chain
+            extra:
+              specification: true
+      - name: Continuous Assurance
+        items:
+          - name: Trustable Software Framework
+            description: The Eclipse Trustable Software Framework (TSF) provides an extensible model for collecting, organising and evaluating evidence for releases of a software
+                         project/product ("XYZ"), to allow a consumer to consider to what extent they should trust the software. The TSF broadly identifies six key topics
+                         ("Trustable Tenets"), made up of more detailed factors ("Trustable Assertions").
+            homepage_url: https://pages.eclipse.dev/eclipse/tsf/tsf/
+            repo_url: https://gitlab.eclipse.org/eclipse/tsf/tsf
+            logo: trustable-logo.svg
+            extra:
+              summary_tags: Supply Chain, Software Integrity, Eclipse Foundation
+              specification: true
   - name: Tools
     subcategories:
       - name: Requirements Management
@@ -142,12 +176,14 @@ categories:
             extra:
               summary_integration: Used by Zephyr Project
           - name: Sphinx-needs
+            project: commercial-offer
             description: Sphinx extension for managing requirements, specifications, and other project needs within Sphinx documentation.
             homepage_url: https://sphinx-needs.readthedocs.io/en/latest/index.html
             repo_url: https://github.com/useblocks/sphinx-needs
             logo: placeholder.svg
             extra:
               summary_integration: Eclipse S-CORE
+              summary_tags: Commercial Support
           - name: OpenFastTrace
             description: OpenFastTrace (short OFT) is a requirement management and tracing suite. Requirement tracing keeps track of whether you actually implemented everything you planned to in your specifications. It also identifies obsolete parts of your product and helps you to get rid of them.
             homepage_url: https://github.com/itsallcode/openfasttrace/blob/main/doc/user_guide/user_guide.md

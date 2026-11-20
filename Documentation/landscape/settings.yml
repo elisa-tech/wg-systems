@@ -5,6 +5,15 @@ url: http://localhost:8000
 description: Open-source technologies for safe and reliable systems.
 grid_items_size: medium
 view_mode: grid
+featured_items:
+  - field: maturity
+    options:
+      - value: commercial-offer
+        label: Commercial offer
+      - value: under-certification
+        label: Under certification
+      - value: safety-certified
+        label: Safety certified
 groups:
   - name: Projects
     alias: projects
