@@ -8,3 +8,41 @@ categories:
       building safe, reliable, and maintainable systems. It is maintained by the
       ELISA Systems Working Group and is intended as a navigable ecosystem map,
       not as an endorsement or certification of the listed projects.
+  - category: How to read the landscape
+    keywords: []
+    content: |
+      - Categories group entries by their primary role or relevance; they are not
+        rankings or assessments of quality:
+        - `Projects` includes frameworks and middleware, operating systems and
+          virtualization, development tools, and organizations or initiatives
+          supporting the systems lifecycle.
+        - `Standards` includes standards and supply-chain integrity or continuous
+          assurance resources.
+        - `Events` includes functional-safety events, open-source events, and
+          industry fairs or exhibitions.
+      - The Stats section is provided by Landscape2. Project and maturity totals
+        count only entries carrying one of the project maturity labels; they do
+        not count every landscape entry. Repository statistics are based on
+        configured repository links and are not a one-to-one count of entries.
+      - Stats may include information automatically retrieved from GitHub. The
+        ELISA Systems Working Group does not actively review, verify, or maintain
+        these statistics and cannot guarantee their accuracy, completeness, or
+        timeliness. They may be unavailable or outdated if the underlying data or
+        external services change.
+  - category: How to read project maturity
+    keywords: []
+    content: |
+      - `safety-certified` and `safety-qualified` apply only to the product,
+        version, configuration, intended use, and criteria stated by the named
+        program or issuing body. They do not imply that the entire project or all
+        its uses are certified or qualified. These claims are not independently
+        verified or endorsed by the ELISA Systems Working Group.
+      - `upstream-certification-support` and `upstream-qualification-support`
+        indicate that an upstream project provides support for downstream
+        certification or qualification. They do not mean that the upstream
+        project or a downstream product is itself certified or qualified.
+      - `safety-review-needed` means further safety review has been identified
+        as necessary. It is not a statement that the project is unsafe or
+        unqualified.
+      - An entry without a maturity label has not been assessed for a status in
+        this landscape.

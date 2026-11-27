@@ -8,12 +8,16 @@ view_mode: grid
 featured_items:
   - field: maturity
     options:
-      - value: commercial-offer
-        label: Commercial offer
-      - value: under-certification
-        label: Under certification
       - value: safety-certified
         label: Safety certified
+      - value: safety-qualified
+        label: Safety qualified
+      - value: upstream-certification-support
+        label: Upstream certification support
+      - value: upstream-qualification-support
+        label: Upstream qualification support
+      - value: safety-review-needed
+        label: Further safety review needed
 groups:
   - name: Projects
     alias: projects

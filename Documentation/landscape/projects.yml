@@ -3,21 +3,25 @@
 categories:
   - name: Tools
     subcategories:
-      - name: Compiler
+      - name: Compiler and Toolchain
         items:
           - name: LLVM
+            project: upstream-qualification-support
             description: A collection of modular and reusable compiler and toolchain technologies.
             homepage_url: https://llvm.org/
             repo_url: https://github.com/llvm/llvm-project
             logo: LLVM.svg
           - name: Ferrocene
-            project: commercial-offer
+            project: safety-qualified
             description: Open-source compiler infrastructure, quality-managed, TÜV SÜD–qualified, open source toolchain for use in embedded, safety- and mission-critical systems.
             homepage_url: https://ferrocene.org/
             repo_url: https://github.com/ferrocene/ferrocene
             logo: placeholder.svg
             extra:
               summary_tags: Rust, Qualified, ISO 26262, Commercial Support
+              other_links:
+                - name: Qualification evidence
+                  url: https://www.tuvsud.com/en/customer-hub/ps-cert/?q=Z10+123030+0001
       - name: Supply Chain
         items: []
   - name: Operating Systems
@@ -25,7 +29,7 @@ categories:
       - name: Real-time
         items:
           - name: Zephyr
-            project: under-certification
+            project: upstream-certification-support
             description: Open-source real-time operating system for resource-constrained embedded devices, with broad hardware, connectivity, and security support.
             homepage_url: https://www.zephyrproject.org/
             repo_url: https://github.com/zephyrproject-rtos/zephyr
@@ -49,25 +53,28 @@ categories:
       - name: Virtualization
         items:
           - name: Xen Project
-            project: under-certification
+            project: upstream-certification-support
             description: Open-source hypervisor for running isolated virtual machines on cloud, embedded, and security-sensitive platforms.
             homepage_url: https://xenproject.org/
             repo_url: https://github.com/xen-project/xen
             logo: logo-xen.svg
           - name: L4Re
-            project: commercial-offer
+            project: upstream-certification-support
             description: Open-source microkernel-based operating system framework and hypervisor designed for safety, security, and real-time workloads.
             homepage_url: https://l4re.org/
             logo: placeholder.svg
       - name: Rich operating systems
         items:
           - name: AutoSD
-            project: commercial-offer
-            description: Community version of the commercial Red Hat In-Vehicle OS targeted at ASIL-B products.
+            project: upstream-certification-support
+            description: Community upstream for [Red Hat In-Vehicle OS](https://www.redhat.com/en/resources/in-vehicle-operating-system-datasheet), which is certified to ISO 26262 ASIL B for specific hardware.
             homepage_url: https://sigs.centos.org/automotive/
             repo_url: https://gitlab.com/CentOS/automotive
             extra:
-              summary_tags: ISO 26262, Automotive
+              summary_tags: Automotive
+              other_links: 
+                - name: Red Hat In-Vehicle OS Datasheet
+                  url: https://www.redhat.com/en/resources/in-vehicle-operating-system-datasheet
             logo: centos-autosd.svg
           - name: OxidOS Automotive
             description: Rust-based secure operating system and development tools for safety-critical automotive microcontrollers.
@@ -94,7 +101,6 @@ categories:
               summary_tags: C++
             logo: iceoryx.svg
           - name: Eclipse iceoryx2
-            project: commercial-offer
             description: Rust inter-process communication middleware designed for fast, reliable, zero-copy communication.
             homepage_url: https://iceoryx.io/
             repo_url: https://github.com/eclipse-iceoryx/iceoryx2
@@ -107,9 +113,13 @@ categories:
             repo_url: https://github.com/ApexAI
             logo: project-apex-ai.svg
           - name: ROS2
+            project: safety-review-needed
             description: Open-source robotics middleware for building robot applications, providing libraries and tools for hardware abstraction, device control, and communication between processes.
             homepage_url: https://index.ros.org/doc/ros2/
             repo_url: https://github.com/ros2/ros2
+            additional_repos:
+              - repo_url: https://github.com/ros-safety/safety_working_group
+              - repo_url: https://github.com/ros-safety
             logo: project-ros2.svg
 
   - name: Organization (Lifecycle Support)
@@ -176,7 +186,7 @@ categories:
             extra:
               summary_integration: Used by Zephyr Project
           - name: Sphinx-needs
-            project: commercial-offer
+            project: upstream-qualification-support
             description: Sphinx extension for managing requirements, specifications, and other project needs within Sphinx documentation.
             homepage_url: https://sphinx-needs.readthedocs.io/en/latest/index.html
             repo_url: https://github.com/useblocks/sphinx-needs
@@ -184,6 +194,9 @@ categories:
             extra:
               summary_integration: Eclipse S-CORE
               summary_tags: Commercial Support
+              other_links:
+                - name: Useblocks Safety Approach
+                  url: https://safety.useblocks.com/usage/approach_iso26262.html
           - name: OpenFastTrace
             description: OpenFastTrace (short OFT) is a requirement management and tracing suite. Requirement tracing keeps track of whether you actually implemented everything you planned to in your specifications. It also identifies obsolete parts of your product and helps you to get rid of them.
             homepage_url: https://github.com/itsallcode/openfasttrace/blob/main/doc/user_guide/user_guide.md
