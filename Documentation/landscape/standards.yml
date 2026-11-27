@@ -83,6 +83,7 @@ categories:
             description: >-
               Standardized persistent identifiers for software source code artifacts. An SPDX SBOM and a safety assessment can use the same SWHID to identify the assessed source tree, even if its repository later moves.
             homepage_url: https://www.swhid.org/
+            logo: standards-swhid.svg
             extra:
               specification: true
       - name: Continuous Assurance
